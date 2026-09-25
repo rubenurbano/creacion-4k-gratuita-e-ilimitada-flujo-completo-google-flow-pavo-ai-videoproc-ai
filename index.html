@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0e1a">
+<title>Dominio de Video IA — Creación 4K Gratuita e Ilimitada · Rubén Sbarsky</title>
+<style>
+:root{
+  --bg:#0a0e1a;
+  --bg-2:#070b14;
+  --card:#0f172a;
+  --card-2:#111c33;
+  --border:#1e3a5f;
+  --border-soft:#16294a;
+  --accent:#00d4ff;
+  --green:#22c55e;
+  --amber:#f59e0b;
+  --red:#ef4444;
+  --purple:#a855f7;
+  --text:#e2e8f0;
+  --text-dim:#94a3b8;
+  --text-faint:#64748b;
+  --radius:10px;
+  --radius-lg:12px;
+  --shadow:0 8px 32px rgba(0,0,0,0.45);
+  --font:'Segoe UI', system-ui, -apple-system, sans-serif;
+  --mono:'Cascadia Code','Fira Code',Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:16px;
+  line-height:1.65;
+  min-height:100vh;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- PROGRESO ---------- */
+#progressBar{
+  position:fixed;top:0;left:0;right:0;height:3px;
+  background:transparent;z-index:1000;
+}
+#progressFill{
+  height:100%;width:0%;
+  background:linear-gradient(90deg,#00d4ff,#a855f7,#22c55e,#f59e0b);
+  box-shadow:0 0 10px rgba(0,212,255,0.6);
+  transition:width .15s ease;
+}
+
+/* ---------- NAVBAR ---------- */
+.navbar{
+  position:fixed;top:3px;left:0;right:0;z-index:999;
+  background:rgba(10,14,26,0.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+  padding:8px 0;
+}
+.nav-scroll{
+  display:flex;gap:6px;
+  overflow-x:auto;
+  scrollbar-width:none;
+  padding:0 14px;
+  scroll-behavior:smooth;
+}
+.nav-scroll::-webkit-scrollbar{display:none}
+.nav-link{
+  flex:0 0 auto;
+  padding:8px 14px;
+  border:1px solid var(--border);
+  background:var(--card);
+  color:var(--text-dim);
+  border-radius:8px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.3px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:all .2s ease;
+  font-family:var(--font);
+}
+.nav-link:hover{
+  color:var(--accent);
+  border-color:var(--accent);
+  background:rgba(0,212,255,0.06);
+}
+.nav-link.active{
+  color:#070b14;
+  background:var(--accent);
+  border-color:var(--accent);
+  box-shadow:0 0 14px rgba(0,212,255,0.5);
+}
+
+/* ---------- SECCIONES SPA ---------- */
+.section{display:none;padding:96px 18px 60px;max-width:1180px;margin:0 auto}
+.section.active{display:block;animation:fadeUp .35s ease both}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(14px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ---------- HOME ---------- */
+.hero-svg-wrap{
+  width:100%;
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--border);
+  background:#070b14;
+  box-shadow:0 0 60px rgba(0,212,255,0.12), inset 0 0 30px rgba(0,212,255,0.05);
+  margin-bottom:26px;
+  position:relative;
+}
+.hero-svg-wrap::before{
+  content:'';
+  position:absolute;inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 100%,rgba(0,212,255,0.06),transparent 60%);
+}
+.hero-svg-wrap svg{
+  display:block;width:100%;height:auto;
+}
+.badge{
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:20px;
+  background:rgba(0,212,255,0.08);
+  border:1px solid rgba(0,212,255,0.35);
+  color:var(--accent);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  margin-bottom:16px;
+}
+h1.hero-title{
+  font-size:clamp(28px,5.5vw,52px);
+  font-weight:800;
+  letter-spacing:-.5px;
+  line-height:1.1;
+  background:linear-gradient(90deg,#00d4ff,#a855f7 60%,#22c55e);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  margin-bottom:10px;
+}
+.hero-sub{
+  font-size:clamp(15px,2.4vw,20px);
+  color:var(--text-dim);
+  margin-bottom:20px;
+  font-weight:500;
+}
+.hero-desc{
+  font-size:15.5px;
+  color:var(--text-dim);
+  max-width:820px;
+  margin-bottom:26px;
+}
+blockquote.hero-quote{
+  border-left:3px solid var(--accent);
+  padding:14px 20px;
+  background:linear-gradient(90deg,rgba(0,212,255,0.07),transparent);
+  border-radius:0 var(--radius) var(--radius) 0;
+  font-style:italic;
+  color:#cbd5e1;
+  font-size:15.5px;
+  margin:22px 0;
+  max-width:820px;
+}
+.hero-meta{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:12px;
+  margin:26px 0;
+}
+.metric{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px 14px;
+  text-align:center;
+  transition:all .25s ease;
+}
+.metric:hover{
+  border-color:var(--accent);
+  transform:translateY(-2px);
+  box-shadow:0 6px 24px rgba(0,212,255,0.15);
+}
+.metric .num{
+  font-size:26px;font-weight:800;color:var(--accent);
+  display:block;line-height:1.1;
+}
+.metric .lbl{
+  font-size:11px;color:var(--text-faint);
+  letter-spacing:1.4px;text-transform:uppercase;margin-top:6px;
+  display:block;
+}
+.hero-stamp{
+  display:flex;flex-wrap:wrap;gap:12px;
+  margin-top:22px;
+  padding-top:20px;
+  border-top:1px dashed var(--border);
+  font-size:13px;
+  color:var(--text-faint);
+}
+.hero-stamp .chip{
+  background:var(--card);
+  border:1px solid var(--border);
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:12px;
+  color:var(--text-dim);
+}
+.hero-stamp .chip b{color:var(--accent);font-weight:700}
+
+/* ---------- TIPOGRAFÍA GENERAL ---------- */
+h2.sec-title{
+  font-size:clamp(22px,3.6vw,32px);
+  font-weight:800;
+  letter-spacing:-.3px;
+  color:#f1f5f9;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+h2.sec-title .num-tag{
+  font-size:12px;
+  color:#070b14;
+  background:var(--accent);
+  padding:4px 10px;
+  border-radius:6px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+h3.sec-sub{
+  font-size:19px;
+  font-weight:700;
+  color:var(--accent);
+  margin:28px 0 12px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--border-soft);
+}
+h4{
+  font-size:15.5px;font-weight:700;color:#f1f5f9;margin:16px 0 8px;
+}
+p{margin-bottom:12px;color:#cbd5e1}
+ul,ol{margin:10px 0 16px 22px;color:#cbd5e1}
+li{margin-bottom:6px}
+b,strong{color:#f8fafc;font-weight:700}
+a{color:var(--accent);text-decoration:none;word-break:break-word}
+a:hover{text-decoration:underline}
+code{
+  font-family:var(--mono);
+  background:rgba(0,212,255,0.08);
+  border:1px solid rgba(0,212,255,0.2);
+  border-radius:5px;
+  padding:2px 6px;
+  font-size:.9em;
+  color:#7dd3fc;
+}
+
+/* ---------- CARDS ---------- */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:20px;
+  margin-bottom:18px;
+}
+.card-title{
+  font-size:15px;font-weight:700;color:#f1f5f9;
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.card-title .ic{
+  width:28px;height:28px;border-radius:8px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:rgba(0,212,255,0.12);color:var(--accent);
+  font-size:14px;font-weight:800;flex:0 0 auto;
+}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+
+/* ---------- CALLOUTS ---------- */
+.callout{
+  border-radius:var(--radius);
+  padding:14px 16px 14px 18px;
+  margin:14px 0;
+  border-left:4px solid;
+  font-size:14.5px;
+  position:relative;
+}
+.callout .ct{
+  font-size:11px;font-weight:800;letter-spacing:1.6px;
+  text-transform:uppercase;margin-bottom:6px;display:block;
+}
+.callout.info{background:rgba(0,212,255,0.06);border-color:var(--accent)}
+.callout.info .ct{color:var(--accent)}
+.callout.example{background:rgba(34,197,94,0.06);border-color:var(--green)}
+.callout.example .ct{color:var(--green)}
+.callout.warn{background:rgba(245,158,11,0.07);border-color:var(--amber)}
+.callout.warn .ct{color:var(--amber)}
+.callout.err{background:rgba(239,68,68,0.07);border-color:var(--red)}
+.callout.err .ct{color:var(--red)}
+
+/* ---------- TABLAS ---------- */
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);margin:16px 0;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:14px;min-width:520px}
+thead{background:linear-gradient(90deg,rgba(0,212,255,0.12),rgba(168,85,247,0.08))}
+th{
+  padding:11px 12px;text-align:left;color:var(--accent);
+  font-weight:700;font-size:12.5px;letter-spacing:.6px;
+  text-transform:uppercase;border-bottom:1px solid var(--border);
+}
+td{
+  padding:11px 12px;border-bottom:1px solid var(--border-soft);
+  color:#cbd5e1;vertical-align:top;
+}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(255,255,255,0.015)}
+tbody tr:hover{background:rgba(0,212,255,0.04)}
+
+/* ---------- STEPS ---------- */
+.steps{counter-reset:st;list-style:none;margin:16px 0 16px 0;padding:0}
+.steps li{
+  counter-increment:st;
+  position:relative;
+  padding:16px 16px 16px 58px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin-bottom:12px;
+  font-size:14.5px;
+}
+.steps li::before{
+  content:counter(st,decimal-leading-zero);
+  position:absolute;left:14px;top:14px;
+  width:32px;height:32px;border-radius:8px;
+  background:rgba(0,212,255,0.12);
+  color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:13px;font-family:var(--mono);
+  border:1px solid rgba(0,212,255,0.3);
+}
+.steps li b{color:#f1f5f9}
+
+/* ---------- CODE / PROMPT ---------- */
+.prompt-block{
+  background:#070b14;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  margin:14px 0;
+  overflow:hidden;
+}
+.prompt-head{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 14px;
+  background:linear-gradient(90deg,rgba(0,212,255,0.08),rgba(168,85,247,0.06));
+  border-bottom:1px solid var(--border);
+  font-size:12px;font-weight:700;letter-spacing:1px;
+  color:var(--accent);text-transform:uppercase;
+  gap:10px;flex-wrap:wrap;
+}
+.copy-btn{
+  background:rgba(0,212,255,0.1);
+  border:1px solid rgba(0,212,255,0.4);
+  color:var(--accent);
+  padding:5px 12px;
+  border-radius:6px;
+  font-size:11px;font-weight:700;
+  letter-spacing:.6px;cursor:pointer;
+  font-family:var(--font);
+  transition:all .2s;
+}
+.copy-btn:hover{background:var(--accent);color:#070b14}
+.copy-btn.done{background:var(--green);color:#06210f;border-color:var(--green)}
+.prompt-block pre{
+  padding:16px;
+  font-family:var(--mono);
+  font-size:12.8px;
+  line-height:1.6;
+  color:#cbd5e1;
+  white-space:pre-wrap;
+  word-break:break-word;
+  overflow-x:auto;
+  margin:0;
+}
+
+/* ---------- ACCORDION ---------- */
+.acc{border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;background:var(--card)}
+.acc-head{
+  padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;
+  align-items:center;font-weight:600;color:#f1f5f9;font-size:14.5px;gap:12px;
+  transition:background .2s;
+}
+.acc-head:hover{background:rgba(0,212,255,0.05)}
+.acc-head .arrow{color:var(--accent);transition:transform .25s;flex:0 0 auto;font-size:12px}
+.acc.open .acc-head .arrow{transform:rotate(90deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .35s ease;padding:0 16px;color:#cbd5e1;font-size:14.5px}
+.acc.open .acc-body{max-height:2600px;padding:4px 16px 16px}
+
+/* ---------- FLOW DIAGRAM ---------- */
+.flow-diagram{
+  background:#070b14;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+  margin:16px 0;
+  overflow-x:auto;
+  font-family:var(--mono);
+  font-size:12.5px;
+  color:#7dd3fc;
+  white-space:pre;
+  line-height:1.55;
+}
+.flow-node{
+  display:inline-block;
+  background:var(--card-2);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:12px 14px;
+  margin:6px;
+  font-size:13px;
+  color:#cbd5e1;
+  min-width:180px;
+  flex:1;
+}
+.flow-node b{color:var(--accent);display:block;font-size:11px;letter-spacing:1.2px;margin-bottom:5px;text-transform:uppercase}
+.flow-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.flow-arrow{color:var(--accent);font-size:20px;text-align:center}
+
+/* ---------- FOOTER ---------- */
+footer{
+  text-align:center;
+  padding:36px 18px;
+  border-top:1px solid var(--border);
+  margin-top:60px;
+  color:var(--text-faint);
+  font-size:13.5px;
+  line-height:1.9;
+}
+footer .fi{
+  color:var(--accent);font-style:italic;margin-top:10px;
+  letter-spacing:.5px;
+}
+
+/* ---------- BACK TO TOP ---------- */
+#toTop{
+  position:fixed;right:18px;bottom:18px;
+  width:46px;height:46px;border-radius:50%;
+  background:var(--card);color:var(--accent);
+  border:1px solid var(--accent);
+  display:none;align-items:center;justify-content:center;
+  font-size:20px;cursor:pointer;z-index:998;
+  box-shadow:0 0 20px rgba(0,212,255,0.35);
+  transition:all .25s;
+}
+#toTop.show{display:flex}
+#toTop:hover{background:var(--accent);color:#070b14;transform:translateY(-3px)}
+
+/* ---------- CREDITOS ---------- */
+.credits-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:26px 22px;
+  text-align:center;
+  margin-top:22px;
+}
+.credits-box h3{color:var(--accent);font-size:20px;margin-bottom:14px;border:none;padding:0}
+.credits-box .name{font-size:22px;font-weight:800;color:#f1f5f9;margin:8px 0;letter-spacing:.5px}
+.credits-box .meta{color:var(--text-dim);font-size:14px;margin:4px 0}
+.credits-box .note{
+  margin-top:18px;padding-top:18px;border-top:1px dashed var(--border);
+  color:var(--text-faint);font-size:13px;font-style:italic;
+}
+.credits-box .fiat{
+  margin-top:12px;color:var(--accent);font-style:italic;font-weight:600;letter-spacing:.5px;
+}
+
+/* ---------- EJERCICIOS (EXTENSIÓN) ---------- */
+.diff-badge{
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:20px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.8px;
+  text-transform:uppercase;
+  vertical-align:middle;
+}
+.diff-badge.facil{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.4)}
+.diff-badge.media{background:rgba(245,158,11,0.15);color:var(--amber);border:1px solid rgba(245,158,11,0.4)}
+.diff-badge.dificil{background:rgba(239,68,68,0.15);color:var(--red);border:1px solid rgba(239,68,68,0.4)}
+.ej-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+}
+.ej-head .ej-num{
+  font-family:var(--mono);
+  font-weight:800;
+  color:var(--accent);
+  letter-spacing:1px;
+}
+.ej-head .ej-type{
+  color:var(--text-dim);
+  font-weight:600;
+  font-size:13.5px;
+}
+.ej-head .ej-meta{
+  margin-left:auto;
+  display:flex;
+  gap:6px;
+  align-items:center;
+}
+#sec-ejercicios .acc.open .acc-body{max-height:6000px}
+#sec-ejercicios .acc-head{padding:16px}
+#sec-ejercicios .ej-label{
+  display:inline-block;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  color:var(--text-faint);
+  margin:14px 0 6px;
+}
+@media (max-width:640px){
+  .ej-head .ej-meta{margin-left:0}
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:640px){
+  body{font-size:15px}
+  .section{padding:88px 12px 50px}
+  .nav-link{padding:7px 11px;font-size:12px}
+  h2.sec-title{font-size:22px}
+  .card{padding:16px}
+  .steps li{padding:14px 14px 14px 52px;font-size:14px}
+  .steps li::before{width:28px;height:28px;font-size:12px;left:12px;top:12px}
+  .prompt-block pre{font-size:11.8px;padding:12px}
+  .metric .num{font-size:22px}
+  table{font-size:13px;min-width:440px}
+  th,td{padding:9px 10px}
+  #toTop{right:12px;bottom:12px;width:42px;height:42px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
+  .section.active{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"><div id="progressFill"></div></div>
+
+<nav class="navbar">
+  <div class="nav-scroll" id="navScroll">
+    <button class="nav-link active" data-target="sec-inicio">🏠 Inicio</button>
+    <button class="nav-link" data-target="sec-intro">📖 Introducción</button>
+    <button class="nav-link" data-target="sec-c1">1 · Ecosistema</button>
+    <button class="nav-link" data-target="sec-c2">2 · Google Flow</button>
+    <button class="nav-link" data-target="sec-c3">3 · Pavo AI</button>
+    <button class="nav-link" data-target="sec-c4">4 · VideoProc 4K</button>
+    <button class="nav-link" data-target="sec-c5">5 · Prompts</button>
+    <button class="nav-link" data-target="sec-c6">6 · Cierre</button>
+    <button class="nav-link" data-target="sec-ejercicios">📝 Ejercicios</button>
+    <button class="nav-link" data-target="sec-fuentes">🔗 Fuentes</button>
+    <button class="nav-link" data-target="sec-creditos">🎬 Créditos</button>
+  </div>
+</nav>
+
+<!-- =================== PLANTILLA SVG (ÚNICA, REUTILIZADA) =================== -->
+<template id="heroSvgTemplate">
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Flujo de trabajo de creación de video IA: Google Flow, Pavo AI, VideoProc AI y salida 4K">
+  <defs>
+    <linearGradient id="hbgG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070b14">
+        <animate attributeName="stop-color" values="#070b14;#0d1a30;#070b14;#101c3a;#070b14" dur="9s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#0a0e1a">
+        <animate attributeName="stop-color" values="#0a0e1a;#16294a;#0a0e1a;#0d1a35;#0a0e1a" dur="11s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#070b14">
+        <animate attributeName="stop-color" values="#070b14;#0f1e35;#070b14;#0a1830;#070b14" dur="13s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <radialGradient id="haloCyan" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="haloGreen" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#22c55e" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="haloPurple" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="hgrid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00d4ff" stroke-width="0.5" opacity="0.14">
+        <animate attributeName="opacity" values="0.06;0.28;0.06" dur="5s" repeatCount="indefinite"/>
+      </path>
+    </pattern>
+    <filter id="hglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="hglowStrong" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- FONDO VIVO -->
+  <rect width="800" height="450" fill="url(#hbgG)"/>
+  <rect width="800" height="450" fill="url(#hgrid)"/>
+
+  <!-- REJILLA DECORATIVA + ANILLOS ORBITALES -->
+  <g transform="translate(400,250)" opacity="0.85">
+    <circle r="210" fill="none" stroke="#00d4ff" stroke-width="0.7" stroke-dasharray="7 15">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="42s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.25;0.55;0.25" dur="6s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="240" fill="none" stroke="#a855f7" stroke-width="0.5" stroke-dasharray="3 20">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="58s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.18;0.4;0.18" dur="8s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="175" fill="none" stroke="#22c55e" stroke-width="0.5" stroke-dasharray="4 12">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="30s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.2;0.45;0.2" dur="5.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="130" fill="none" stroke="#f59e0b" stroke-width="0.4" stroke-dasharray="2 8">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="24s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- TITULO -->
+  <text x="400" y="56" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="28" font-weight="800" letter-spacing="3.5" filter="url(#hglowStrong)" fill="#00d4ff">
+    DOMINIO DE VIDEO IA
+    <animate attributeName="fill" values="#00d4ff;#a855f7;#22c55e;#f59e0b;#00d4ff" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="1;0.92;1" dur="4s" repeatCount="indefinite"/>
+  </text>
+  <text x="400" y="82" text-anchor="middle" font-family="Segoe UI, sans-serif" font-size="11" letter-spacing="6" fill="#94a3b8">
+    GOOGLE FLOW · PAVO AI · VIDEOPROC AI · 4K
+    <animate attributeName="opacity" values="0.45;1;0.45" dur="3.5s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- LIVE INDICATOR -->
+  <g transform="translate(720,26)">
+    <circle r="6" fill="#ef4444" filter="url(#hglow)">
+      <animate attributeName="opacity" values="1;0.15;1" dur="1.2s" repeatCount="indefinite"/>
+      <animate attributeName="r" values="5;8;5" dur="1.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="14" y="4" font-family="Segoe UI" font-size="10" font-weight="800" fill="#ef4444" letter-spacing="2">LIVE</text>
+  </g>
+
+  <!-- STATUS LABELS -->
+  <text x="20" y="34" font-family="Consolas, monospace" font-size="9" fill="#00d4ff" letter-spacing="1">
+    ▶ RENDER_OK
+    <animate attributeName="opacity" values="1;0.25;1" dur="2s" repeatCount="indefinite"/>
+  </text>
+  <text x="20" y="48" font-family="Consolas, monospace" font-size="9" fill="#22c55e" letter-spacing="1">
+    ● GPU 4K · 0 CRÉDITOS
+    <animate attributeName="opacity" values="0.4;1;0.4" dur="2.6s" repeatCount="indefinite"/>
+  </text>
+
+  <!-- FLOW PATHS -->
+  <path id="hflow1" d="M 155 245 Q 250 205 345 245" fill="none" stroke="#00d4ff" stroke-width="2" stroke-dasharray="8 6" opacity="0.75" filter="url(#hglow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.5s" repeatCount="indefinite"/>
+  </path>
+  <path id="hflow2" d="M 455 245 Q 550 205 645 245" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="8 6" opacity="0.75" filter="url(#hglow)">
+    <animate attributeName="stroke-dashoffset" from="0" to="-28" dur="1.8s" repeatCount="indefinite"/>
+  </path>
+  <path id="hflow3" d="M 690 300 Q 600 380 465 405" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-dasharray="5 6" opacity="0.6">
+    <animate attributeName="stroke-dashoffset" from="0" to="-22" dur="1.6s" repeatCount="indefinite"/>
+  </path>
+
+  <!-- PARTÍCULAS VIAJERAS -->
+  <circle r="4" fill="#00d4ff" filter="url(#hglowStrong)">
+    <animateMotion dur="2s" repeatCount="indefinite"><mpath href="#hflow1"/></animateMotion>
+  </circle>
+  <circle r="3.5" fill="#a855f7" filter="url(#hglowStrong)">
+    <animateMotion dur="2s" begin="0.7s" repeatCount="indefinite"><mpath href="#hflow1"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#22c55e" filter="url(#hglowStrong)">
+    <animateMotion dur="2s" begin="1.3s" repeatCount="indefinite"><mpath href="#hflow1"/></animateMotion>
+  </circle>
+
+  <circle r="4" fill="#22c55e" filter="url(#hglowStrong)">
+    <animateMotion dur="2.2s" repeatCount="indefinite"><mpath href="#hflow2"/></animateMotion>
+  </circle>
+  <circle r="3.5" fill="#f59e0b" filter="url(#hglowStrong)">
+    <animateMotion dur="2.2s" begin="0.75s" repeatCount="indefinite"><mpath href="#hflow2"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#00d4ff" filter="url(#hglowStrong)">
+    <animateMotion dur="2.2s" begin="1.5s" repeatCount="indefinite"><mpath href="#hflow2"/></animateMotion>
+  </circle>
+
+  <circle r="3.5" fill="#f59e0b" filter="url(#hglowStrong)">
+    <animateMotion dur="1.6s" repeatCount="indefinite"><mpath href="#hflow3"/></animateMotion>
+  </circle>
+  <circle r="3" fill="#ef4444" filter="url(#hglowStrong)">
+    <animateMotion dur="1.6s" begin="0.8s" repeatCount="indefinite"><mpath href="#hflow3"/></animateMotion>
+  </circle>
+
+  <!-- GHOST ELEMENTS -->
+  <g>
+    <rect x="-9" y="-9" width="18" height="18" rx="4" fill="none" stroke="#00d4ff" stroke-width="1.6">
+      <animateMotion dur="3.2s" repeatCount="indefinite"><mpath href="#hflow1"/></animateMotion>
+      <animate attributeName="opacity" values="0;0.85;0.85;0" dur="3.2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  <g>
+    <rect x="-9" y="-9" width="18" height="18" rx="4" fill="none" stroke="#22c55e" stroke-width="1.6">
+      <animateMotion dur="3.2s" begin="1.6s" repeatCount="indefinite"><mpath href="#hflow2"/></animateMotion>
+      <animate attributeName="opacity" values="0;0.85;0.85;0" dur="3.2s" begin="1.6s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- NODO 1: GOOGLE FLOW -->
+  <g transform="translate(110,245)">
+    <circle r="60" fill="url(#haloCyan)">
+      <animate attributeName="r" values="55;78;55" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.45;0.9;0.45" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="42" fill="none" stroke="#00d4ff" stroke-width="1" stroke-dasharray="4 6" opacity="0.65">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="12s" repeatCount="indefinite"/>
+    </circle>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,-3;0,0" dur="3s" repeatCount="indefinite"/>
+      <rect x="-30" y="-30" width="60" height="60" rx="10" fill="#0f172a" stroke="#00d4ff" stroke-width="2" filter="url(#hglow)"/>
+      <text x="0" y="6" text-anchor="middle" font-family="Segoe UI" font-size="20" font-weight="800" fill="#00d4ff">GF</text>
+    </g>
+    <text x="0" y="72" text-anchor="middle" font-family="Segoe UI" font-size="10" font-weight="700" fill="#94a3b8" letter-spacing="1.5">GOOGLE FLOW</text>
+    <circle r="3" fill="#00d4ff" filter="url(#hglow)">
+      <animateMotion dur="7s" repeatCount="indefinite" path="M 52,0 A 52,52 0 1,1 -52,0 A 52,52 0 1,1 52,0"/>
+    </circle>
+  </g>
+
+  <!-- NODO 2: PAVO AI -->
+  <g transform="translate(400,245)">
+    <circle r="72" fill="url(#haloGreen)">
+      <animate attributeName="r" values="66;88;66" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.45;0.95;0.45" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="50" fill="none" stroke="#22c55e" stroke-width="1" stroke-dasharray="5 7" opacity="0.65">
+      <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="15s" repeatCount="indefinite"/>
+    </circle>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,-4;0,0" dur="3.5s" repeatCount="indefinite"/>
+      <rect x="-36" y="-36" width="72" height="72" rx="12" fill="#0f172a" stroke="#22c55e" stroke-width="2.2" filter="url(#hglow)"/>
+      <text x="0" y="8" text-anchor="middle" font-family="Segoe UI" font-size="22" font-weight="800" fill="#22c55e">PAVO</text>
+    </g>
+    <text x="0" y="84" text-anchor="middle" font-family="Segoe UI" font-size="10" font-weight="700" fill="#94a3b8" letter-spacing="1.5">AGNES 2.5 FLASH</text>
+    <circle r="3.5" fill="#22c55e" filter="url(#hglow)">
+      <animateMotion dur="9s" repeatCount="indefinite" path="M 62,0 A 62,62 0 1,0 -62,0 A 62,62 0 1,0 62,0"/>
+    </circle>
+  </g>
+
+  <!-- NODO 3: VIDEOPROC AI -->
+  <g transform="translate(690,245)">
+    <circle r="60" fill="url(#haloPurple)">
+      <animate attributeName="r" values="55;78;55" dur="4.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.45;0.9;0.45" dur="4.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle r="42" fill="none" stroke="#a855f7" stroke-width="1" stroke-dasharray="4 6" opacity="0.65">
+      <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="14s" repeatCount="indefinite"/>
+    </circle>
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0,0;0,-3;0,0" dur="2.7s" repeatCount="indefinite"/>
+      <rect x="-30" y="-30" width="60" height="60" rx="10" fill="#0f172a" stroke="#a855f7" stroke-width="2" filter="url(#hglow)"/>
+      <text x="0" y="6" text-anchor="middle" font-family="Segoe UI" font-size="16" font-weight="800" fill="#a855f7">VP</text>
+    </g>
+    <text x="0" y="72" text-anchor="middle" font-family="Segoe UI" font-size="10" font-weight="700" fill="#94a3b8" letter-spacing="1.5">VIDEOPROC AI</text>
+    <circle r="3" fill="#a855f7" filter="url(#hglow)">
+      <animateMotion dur="8s" repeatCount="indefinite" path="M 52,0 A 52,52 0 1,1 -52,0 A 52,52 0 1,1 52,0"/>
+    </circle>
+  </g>
+
+  <!-- 4K OUTPUT -->
+  <g transform="translate(400,405)">
+    <rect x="-62" y="-22" width="124" height="44" rx="9" fill="#0f172a" stroke="#f59e0b" stroke-width="2" filter="url(#hglow)">
+      <animate attributeName="stroke" values="#f59e0b;#ef4444;#22c55e;#f59e0b" dur="3.4s" repeatCount="indefinite"/>
+    </rect>
+    <text x="0" y="8" text-anchor="middle" font-family="Segoe UI" font-size="20" font-weight="800" fill="#f59e0b" letter-spacing="3">
+      4K OUTPUT
+      <animate attributeName="fill" values="#f59e0b;#ef4444;#22c55e;#f59e0b" dur="3.4s" repeatCount="indefinite"/>
+    </text>
+    <line x1="0" y1="-24" x2="0" y2="-46" stroke="#f59e0b" stroke-width="2" stroke-linecap="round">
+      <animate attributeName="y2" values="-24;-50;-24" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="64" y1="0" x2="86" y2="0" stroke="#f59e0b" stroke-width="2" stroke-linecap="round">
+      <animate attributeName="x2" values="64;92;64" dur="1.5s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite"/>
+    </line>
+    <line x1="0" y1="24" x2="0" y2="46" stroke="#f59e0b" stroke-width="2" stroke-linecap="round">
+      <animate attributeName="y2" values="24;50;24" dur="1.5s" begin="0.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.4s" repeatCount="indefinite"/>
+    </line>
+    <line x1="-64" y1="0" x2="-86" y2="0" stroke="#f59e0b" stroke-width="2" stroke-linecap="round">
+      <animate attributeName="x2" values="-64;-92;-64" dur="1.5s" begin="0.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.4s" repeatCount="indefinite"/>
+    </line>
+    <g>
+      <line x1="-40" y1="-40" x2="-60" y2="-60" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.2s" repeatCount="indefinite"/>
+      </line>
+      <line x1="40" y1="-40" x2="60" y2="-60" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" begin="0.6s" repeatCount="indefinite"/>
+      </line>
+      <line x1="-40" y1="40" x2="-60" y2="60" stroke="#a855f7" stroke-width="1.6" stroke-linecap="round">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </line>
+      <line x1="40" y1="40" x2="60" y2="60" stroke="#00d4ff" stroke-width="1.6" stroke-linecap="round">
+        <animate attributeName="opacity" values="0;1;0" dur="2s" begin="1.4s" repeatCount="indefinite"/>
+      </line>
+    </g>
+  </g>
+
+  <!-- FLASH + TEXTO CLÍMAX -->
+  <g transform="translate(400,160)" opacity="0">
+    <text x="0" y="0" text-anchor="middle" font-family="Segoe UI" font-size="34" font-weight="900" letter-spacing="5" fill="#f59e0b" filter="url(#hglowStrong)">
+      ✦ 4K ✦
+    </text>
+    <animate attributeName="opacity" values="0;0;1;0.85;0;0" dur="6s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- FIRMA -->
+  <text x="400" y="443" text-anchor="middle" font-family="Segoe UI" font-size="9" fill="#64748b" letter-spacing="3">
+    RUBÉN SBARSKY · DOMINIO DE VIDEO IA
+    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="5s" repeatCount="indefinite"/>
+  </text>
+</svg>
+</template>
+
+<!-- =================== SECCIÓN: INICIO =================== -->
+<section id="sec-inicio" class="section active">
+  <div class="hero-svg-wrap" id="svgHome"></div>
+
+  <span class="badge">Tutorial Técnico · IA Video · 2026</span>
+  <h1 class="hero-title">Dominio de Video IA</h1>
+  <p class="hero-sub">Creación 4K Gratuita e Ilimitada — Flujo completo Google Flow → Pavo AI → VideoProc AI</p>
+  <p class="hero-desc">
+    Un recorrido profesional, paso a paso, por el flujo de trabajo que permite generar animaciones,
+    videos cinematográficos y sincronización labial (<em>lip-sync</em>) de calidad 4K
+    usando exclusivamente herramientas gratuitas, ilimitadas y sin marca de agua.
+    Sin instalar software pesado, sin pagar suscripciones y sin límites de créditos.
+  </p>
+
+  <blockquote class="hero-quote">
+    "Si no puedes explicarlo de forma sencilla, es que no lo entiendes lo suficientemente bien."
+  </blockquote>
+
+  <div class="hero-meta">
+    <div class="metric"><span class="num">3</span><span class="lbl">Herramientas</span></div>
+    <div class="metric"><span class="num">0</span><span class="lbl">Créditos IA</span></div>
+    <div class="metric"><span class="num">4K</span><span class="lbl">Salida Real</span></div>
+    <div class="metric"><span class="num">5</span><span class="lbl">Prompts Maestros</span></div>
+    <div class="metric"><span class="num">6</span><span class="lbl">Capítulos</span></div>
+    <div class="metric"><span class="num">10</span><span class="lbl">Ejercicios</span></div>
+  </div>
+
+  <div class="hero-stamp">
+    <span class="chip">📅 <b>24/09/2026</b></span>
+    <span class="chip">⏱️ <b>16:36:16</b></span>
+    <span class="chip">✍️ <b>Rubén Sbarsky</b></span>
+    <span class="chip">🎬 <b>Flujo 4K sin coste</b></span>
+  </div>
+
+  <div class="card" style="margin-top:26px">
+    <div class="card-title"><span class="ic">▶</span> Cómo navegar este tutorial</div>
+    <p>Usa la barra superior para acceder a cada capítulo. La sección <b>EJERCICIOS</b> contiene 10 actividades prácticas con solución paso a paso. La sección <b>FUENTES</b> contiene todos los enlaces oficiales y la sección <b>CRÉDITOS</b> reúne la información del autor. Cada capítulo conserva íntegramente el contenido original, reorganizado visualmente para facilitar el estudio.</p>
+    <p>Dentro del tutorial encontrarás <b>tablas comparativas</b>, <b>callouts</b> (INFO / EJEMPLO / ADVERTENCIA / ERROR), <b>bloques de prompts copiables</b> con un solo clic, <b>acordeones</b> desplegables y <b>ejercicios con solución</b>.</p>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: INTRODUCCIÓN =================== -->
+<section id="sec-intro" class="section">
+  <h2 class="sec-title"><span class="num-tag">00</span> Introducción y Fundamentos</h2>
+
+  <h3 class="sec-sub">¿Qué es este tema y para qué sirve?</h3>
+  <p>
+    La <b>creación de video con inteligencia artificial (IA)</b> es un conjunto de herramientas y técnicas
+    que permiten generar animaciones, videos cinematográficos y sincronización de voz (<em>lip-sync</em>)
+    a partir de descripciones de texto e imágenes fijas.
+  </p>
+  <p>
+    Sirve para que cualquier persona, sin necesidad de saber diseñar, animar en 3D o utilizar complejos
+    programas de edición, pueda <b>producir cortos, anuncios, historias animadas o contenido para redes
+    sociales en resolución 4K de forma 100% gratuita e ilimitada</b>.
+  </p>
+
+  <h3 class="sec-sub">¿Por qué es importante aprenderlo hoy?</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title"><span class="ic">1</span> Democratización</div>
+      <p style="font-size:14.5px;margin:0">Tradicionalmente, crear una animación de 10 segundos con personajes coherentes requería software costoso y semanas de trabajo. Hoy es posible hacerlo en minutos sin gastar dinero.</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ic">2</span> Barreras financieras</div>
+      <p style="font-size:14.5px;margin:0">La mayoría de las plataformas de IA cobran suscripciones elevadas o limitan las generaciones a clips de 5 segundos con baja calidad. Este método enseña a usar flujos ilimitados a costo cero (0 créditos).</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ic">3</span> Calidad 4K</div>
+      <p style="font-size:14.5px;margin:0">Aprenderás a tomar un video generado en baja resolución (720p) y escalarlo por software hasta calidad cinematográfica 4K.</p>
+    </div>
+  </div>
+
+  <h3 class="sec-sub">¿En qué situaciones reales se utiliza?</h3>
+  <ul>
+    <li><b>Creación de contenido para YouTube, TikTok o Reels:</b> producción de historias tipo anime o miniseries episódicas.</li>
+    <li><b>Publicidad y marketing digital:</b> generación de spots publicitarios con personajes virtuales que hablan directamente a la audiencia.</li>
+    <li><b>Prototipado de guiones o storyboards:</b> visualización rápida de escenas cinematográficas para cineastas o creativos.</li>
+    <li><b>Educación y divulgación:</b> creación de avatares animados que explican conceptos complejos de forma dinámica.</li>
+  </ul>
+
+  <h3 class="sec-sub">Analogía cotidiana: La Productora de Cine Virtual</h3>
+  <div class="callout info">
+    <span class="ct">Analogía</span>
+    <p style="margin:0 0 8px">Imagina que eres el director de una película:</p>
+    <ul style="margin:0">
+      <li><b>Google Flow</b> es tu <b>departamento de vestuario y fotografía</b>: diseña al actor principal, la ropa y el escenario exacto.</li>
+      <li><b>Pavo AI (Agnes Video 2.5 Flash)</b> es tu <b>equipo de rodaje y actores</b>: toma las fotos del departamento de vestuario, les da movimiento, les hace hablar el guion y los graba en video.</li>
+      <li><b>VideoProc AI</b> es tu <b>sala de postproducción y laboratorio 4K</b>: limpia la imagen, enfoca los detalles y entrega la película lista para la pantalla grande.</li>
+    </ul>
+  </div>
+
+  <h3 class="sec-sub">Resumen de la Introducción</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Concepto</th><th>Explicación Sencilla</th></tr></thead>
+      <tbody>
+        <tr><td><b>Generación de Video IA</b></td><td>Crear animaciones y videos realistas usando instrucciones de texto e imágenes.</td></tr>
+        <tr><td><b>Costo Cero e Ilimitado</b></td><td>Estrategia mediante el modelo <em>Agnes Video 2.5 Flash</em> para generar clips sin gastar créditos.</td></tr>
+        <tr><td><b>Escalado 4K</b></td><td>Proceso técnico para convertir videos de resolución media (720p) en ultra alta definición.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: CAPÍTULO 1 =================== -->
+<section id="sec-c1" class="section">
+  <h2 class="sec-title"><span class="num-tag">01</span> El Ecosistema de Herramientas Gratuitas e Ilimitadas</h2>
+  <p>Para dominar este flujo de trabajo no necesitas instalar programas pesados de diseño ni pagar mensualidades. Utilizaremos tres herramientas especializadas que se complementan entre sí.</p>
+
+  <h3 class="sec-sub">Las 3 Herramientas Clave</h3>
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-title"><span class="ic">1</span> Google Flow</div>
+      <p style="font-size:14.5px;margin:0">Herramienta de IA para la generación y transformación de imágenes. La usamos para diseñar los personajes y la composición visual inicial (<em>character sheets</em> y fotogramas clave).</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ic">2</span> Pavo AI</div>
+      <p style="font-size:14.5px;margin:0">Plataforma de generación de video con IA (<em>Pavo App / Agnes Video 2.5 Flash</em>). Permite usar el modo de lienzo (<em>Canvas</em>) y el motor de drama corto (<em>Short Drama</em>) para animar las imágenes y lograr sincronización labial exacta (<em>lip-sync</em>).</p>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="ic">3</span> VideoProc AI</div>
+      <p style="font-size:14.5px;margin:0">Software de procesamiento de video por IA (<em>VideoProc Converter AI</em>). Su función <b>Súper Resolución</b> mejora la calidad del video final desde 720p (o 360p) hasta 4K real.</p>
+    </div>
+  </div>
+
+  <h3 class="sec-sub">Tabla Comparativa de Herramientas</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Herramienta</th><th>Función Principal</th><th>Modelo / Función Usada</th><th>Límite / Costo</th></tr></thead>
+      <tbody>
+        <tr><td><b>Google Flow</b></td><td>Diseño de personajes y escenarios</td><td>Nano Banana Pro / Generación de imágenes</td><td>Gratuito e ilimitado</td></tr>
+        <tr><td><b>Pavo AI</b></td><td>Animación de video y voz (<em>Lip-sync</em>)</td><td>Agnes Video 2.5 Flash / Lienzo (<em>Canvas</em>)</td><td><b style="color:var(--green)">0 Créditos</b> (Ilimitado)</td></tr>
+        <tr><td><b>VideoProc AI</b></td><td>Reescalado a 4K y mejora de nitidez</td><td>Súper Resolución por IA</td><td>5 exportaciones 4K gratis sin marca de agua</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sec-sub">Esquema Visual del Flujo de Trabajo</h3>
+  <div class="flow-diagram">
++-------------------------------------------------------------------+
+| 1. GOOGLE FLOW                                                    |
+| Imagen de referencia -&gt; Prompt Maestro -&gt; Fotograma Clave         |
++-------------------------------------------------------------------+
+                                  |
+                                  v
++-------------------------------------------------------------------+
+| 2. PAVO AI (Agnes Video 2.5 Flash)                                |
+| Fotograma Clave + Prompts de Tiempos + Guion Fonetico -&gt; Clip 720p|
++-------------------------------------------------------------------+
+                                  |
+                                  v
++-------------------------------------------------------------------+
+| 3. VIDEOPROC AI                                                   |
+| Clip 720p -&gt; Procesamiento Super Resolucion -&gt; Video Final 4K     |
++-------------------------------------------------------------------+
+  </div>
+
+  <div class="flow-row">
+    <div class="flow-node"><b>FASE 1</b>Diseño de imagen<br><small style="color:var(--text-faint)">Google Flow</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node"><b>FASE 2</b>Animación + Lip-Sync<br><small style="color:var(--text-faint)">Pavo AI · Agnes 2.5 Flash</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node"><b>FASE 3</b>Escalado 4K<br><small style="color:var(--text-faint)">VideoProc AI</small></div>
+  </div>
+
+  <h3 class="sec-sub">Resumen del Capítulo 1</h3>
+  <div class="callout example">
+    <span class="ct">Resumen</span>
+    <ul style="margin:0">
+      <li>El flujo consta de 3 fases: <b>Diseño de Imagen (Google Flow)</b> → <b>Animación de Video (Pavo AI)</b> → <b>Escalado 4K (VideoProc AI)</b>.</li>
+      <li>El modelo <b>Agnes Video 2.5 Flash</b> es el secreto para mantener la generación de video en costo de 0 créditos.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: CAPÍTULO 2 =================== -->
+<section id="sec-c2" class="section">
+  <h2 class="sec-title"><span class="num-tag">02</span> Fase 1 — Diseño Consistente de Personajes y Escenarios en Google Flow</h2>
+
+  <h3 class="sec-sub">Concepto Clave: Consistencia Visual</h3>
+  <p>El error más común en la animación con IA es que el personaje cambia de rostro o de ropa entre escena y escena. Para solucionar esto se utiliza una <b>Hoja de Personaje (Character Sheet)</b> y <b>etiquetas de referencia</b> (como <code>@PersonajePrincipal</code> o <code>@TuImagen</code>).</p>
+
+  <h3 class="sec-sub">Pasos Numerados y Accionables (Paso a Paso)</h3>
+  <ol class="steps">
+    <li>
+      <b>Paso 1: Acceder a Google Flow y cargar tu imagen base</b><br>
+      <b>Acción:</b> ingresa a la plataforma e inicia sesión. Sube la foto original que deseas transformar en personaje animado.<br>
+      <b>Motivo:</b> utilizar una imagen como "ingrediente" le da a la IA la estructura facial real del sujeto, garantizando que el personaje resultante conserve sus rasgos característicos.
+    </li>
+    <li>
+      <b>Paso 2: Transformar la foto a estilo Anime</b><br>
+      <b>Acción:</b> arrastra la imagen cargada al cuadro de ingredientes y aplica el <b>Prompt 1 (Foto a Anime)</b> incluido en el Capítulo 5.<br>
+      <b>Motivo:</b> este prompt define el tipo de plano (<em>Medium Shot</em>), el peinado, la vestimenta (terno negro) y el estilo gráfico (anime 2D con <em>cel-shading</em>).<br>
+      <b>Resultado:</b> descarga la variación que mejor se adapte a tus gustos.
+    </li>
+    <li>
+      <b>Paso 3: Generar la Hoja de Personaje Principal (<code>Character Sheet</code>)</b><br>
+      <b>Acción:</b> crea una nueva generación utilizando el personaje anterior como ingrediente y aplica el prompt de diseño multitoma (3 vistas: frente, perfil, espalda).<br>
+      <b>Motivo:</b> tener al personaje renderizado en múltiples ángulos en un solo lienzo le enseña a la IA cómo se ve la persona desde cualquier punto de vista.<br>
+      <b>Etiqueta asignada:</b> <code>@PersonajePrincipal</code>.
+    </li>
+    <li>
+      <b>Paso 4: Diseñar el Personaje Secundario y el Escenario</b><br>
+      <b>Acción:</b> genera la hoja del personaje secundario (<code>@PersonajeSecundario</code>, hombre agotado con ropa desgastada) y el entorno (<code>@EscenarioUrbano</code>, calle oscura en escala de grises).<br>
+      <b>Motivo:</b> mantener todos los elementos en el mismo estilo gráfico (escala de grises con tonos sobrios) evita discordancias visuales al unir las capas.
+    </li>
+    <li>
+      <b>Paso 5: Crear la Composición Final (Fotograma Clave Inicial)</b><br>
+      <b>Acción:</b> junta los personajes generados y el escenario dentro del cuadro de ingredientes de Google Flow, y ejecuta el prompt de composición compartida.<br>
+      <b>Motivo:</b> esto produce una sola imagen coherente donde ambos personajes están situados en la calle a escala anatómica proporcional. Esta imagen será la semilla de tu video.
+    </li>
+  </ol>
+
+  <h3 class="sec-sub">Errores Frecuentes en la Fase 1</h3>
+  <div class="callout err">
+    <span class="ct">Error</span>
+    <p style="margin:0 0 6px"><b>❌ Error:</b> usar descripciones vagas como "un chico anime bonito".</p>
+    <p style="margin:0 0 6px"><b>Consecuencia:</b> la IA cambiará la cara del personaje en cada intento.</p>
+    <p style="margin:0"><b>Solución:</b> especificar detalles concretos (flequillo texturizado, terno negro ajustado, piel morena clara) y usar etiquetas <code>@</code>.</p>
+  </div>
+  <div class="callout err">
+    <span class="ct">Error</span>
+    <p style="margin:0 0 6px"><b>❌ Error:</b> mezclar estilos gráficos (un personaje ultra-realista sobre un fondo de caricatura infantil).</p>
+    <p style="margin:0"><b>Solución:</b> mantener palabras clave de estilo unificadas en todos los prompts (por ejemplo: <em>2D anime estético, cel-shading suave, escala de grises</em>).</p>
+  </div>
+
+  <h3 class="sec-sub">Ejemplo Correcto vs. Incorrecto</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tipo</th><th>Prompt Aplicado</th><th>Resultado Visual</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--red)">❌ <b>Incorrecto</b></td>
+          <td><em>"Crea un video de un hombre hablando sobre IA en la calle."</em></td>
+          <td>Personaje deforme, parpadeo constante, ropa que cambia de color, voz fuera de ritmo.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--green)">✅ <b>Correcto</b></td>
+          <td>Uso del <em>Prompt Maestro</em> con etiquetas <code>@PersonajePrincipal</code>, estructura de cámara por segundos, guion fonético y candados negativos.</td>
+          <td>Animación fluida de 12 s, gestos naturales, sincronización labial exacta y fondo estático sin distorsiones.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sec-sub">Resumen del Capítulo 2</h3>
+  <div class="callout example">
+    <span class="ct">Resumen</span>
+    <ul style="margin:0">
+      <li>Usa <b>Google Flow</b> para crear las imágenes de referencia.</li>
+      <li>Genera siempre una <b>Hoja de Personaje (<code>Character Sheet</code>)</b> antes de hacer videos.</li>
+      <li>La <b>composición inicial</b> une personajes y escenarios en un solo fotograma clave.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: CAPÍTULO 3 =================== -->
+<section id="sec-c3" class="section">
+  <h2 class="sec-title"><span class="num-tag">03</span> Fase 2 — Animación de Video, Drama Corto y Lip-Sync Avanzado en Pavo AI</h2>
+
+  <h3 class="sec-sub">Concepto Clave: Agnes Video 2.5 Flash y el Lienzo (Canvas)</h3>
+  <p>Pavo AI es el motor principal de animación. Utilizando la interfaz de <b>Lienzo (<code>Canvas</code>)</b> podemos colocar imágenes de inicio y controlar el movimiento de cámara segundo a segundo.</p>
+
+  <h3 class="sec-sub">Pasos Numerados y Accionables (Paso a Paso)</h3>
+  <ol class="steps">
+    <li>
+      <b>Paso 1: Iniciar sesión en Pavo AI</b><br>
+      <b>Acción:</b> ingresa a Pavo AI y regístrate. Recibirás 200 créditos de bienvenida.<br>
+      <b>Observación importante:</b> no te preocupes por los créditos, pues <b>gastaremos 0 créditos</b> en cada generación utilizando el modelo correcto.
+    </li>
+    <li>
+      <b>Paso 2: Seleccionar el Modelo Gratuito (<em>Agnes Video 2.5 Flash</em>)</b><br>
+      <b>Acción:</b> en el menú de selección de modelo, escoge <b>Agnes Video 2.5 Flash</b>.<br>
+      <b>Motivo:</b> este modelo es 100% gratuito e ilimitado. Si eliges otros modelos, la plataforma te cobrará créditos.
+    </li>
+    <li>
+      <b>Paso 3: Entrar al área de trabajo "Lienzo" (<code>Canvas</code>)</b><br>
+      <b>Acción:</b> en el panel izquierdo, haz clic en <b>Lienzo</b> y luego en <b>Comenzar a crear</b>. Crea un nuevo bloque de <b>Video</b>.<br>
+      <b>Motivo:</b> el lienzo te brinda control total sobre las conexiones entre fotogramas e imágenes de referencia.
+    </li>
+    <li>
+      <b>Paso 4: Cargar el Fotograma Clave y Desvincular la Segunda Imagen</b><br>
+      <b>Acción:</b> elige la opción <code>First &amp; Last Frame</code>. Carga tu fotograma clave creado en Google Flow como <em>Primer Fotograma</em>. Elimina el enlace (haz clic en la X) de la segunda imagen.<br>
+      <b>Motivo:</b> si mantienes la segunda imagen vinculada, la IA intentará hacer una transición forzada. Al eliminarla, la IA animará libremente a partir del primer fotograma siguiendo tu prompt.
+    </li>
+    <li>
+      <b>Paso 5: Configurar la Duración y la Resolución Nativa</b><br>
+      <b>Acción:</b> configura la relación de aspecto en <code>16:9</code>, la duración en <code>12 segundos</code> y la resolución en <code>720p</code>.<br>
+      <b>Motivo:</b> elegir 720p dentro de Agnes Video 2.5 Flash mantiene el costo de generación en <b>0 créditos</b>. Si seleccionas 1080p o 2K directamente en la web, la plataforma te exigirá plan de pago o consumirá créditos.
+    </li>
+    <li>
+      <b>Paso 6: Estructurar el Prompt de Animación con Tiempos y Guion</b><br>
+      <b>Acción:</b> pega el prompt estructurado en la casilla de texto (revisa el Capítulo 5 para ver las plantillas de código).<br>
+      <b>Motivo:</b> dividir el prompt por marcas de tiempo (ej. <code>0.0s – 3.0s: Plano medio-largo...</code>) le indica a la IA exactamente cuándo hacer cortes de cámara y cuándo activar cada frase del guion.
+    </li>
+    <li>
+      <b>Paso 7 (Avanzado): Uso del Módulo "Drama Corto" (<code>Short Drama</code>)</b><br>
+      <b>Acción:</b> si deseas crear historias completas de más de 5 minutos, selecciona <b>Drama Corto</b> en el panel izquierdo:
+      <ol style="margin-top:6px">
+        <li>Introduce la idea general de tu historia.</li>
+        <li>La IA creará el esquema del guion, personajes y escenarios automáticamente.</li>
+        <li>Ejecuta la <b>generación de imágenes por lotes</b> y luego la <b>generación de videos por lotes</b>.</li>
+      </ol>
+      <b>Motivo:</b> este modo funciona como un agente autónomo que produce episodios completos de forma automatizada.
+    </li>
+  </ol>
+
+  <h3 class="sec-sub">El Consejo de Oro de ZehIAs: Sincronización Labial (Lip-Sync) Impecable</h3>
+  <p>Para evitar que la IA pronuncie mal el español o genere gesticulaciones extrañas en la boca, se deben aplicar <b>marcas fonéticas separadas por guiones</b> en palabras compuestas o nombres de marca.</p>
+  <div class="grid-2">
+    <div class="callout err">
+      <span class="ct">❌ Incorrecto</span>
+      <p style="margin:0"><code>"Gracias a ZehIAs"</code><br><small style="color:var(--text-dim)">La IA leerá "Zehias" como una sola palabra corrida o en inglés.</small></p>
+    </div>
+    <div class="callout example">
+      <span class="ct">✅ Correcto</span>
+      <p style="margin:0"><code>"Gracias a Ze-I-As"</code><br><small style="color:var(--text-dim)">La IA pronunciará claramente cada sílaba y moverá los labios en perfecta sincronía cuadro por cuadro.</small></p>
+    </div>
+  </div>
+
+  <h3 class="sec-sub">Candados Negativos (Negative Prompts)</h3>
+  <p>Son instrucciones explícitas que le dicen a la IA <b>qué cosas NO debe incluir en la imagen</b>. Evitan distorsiones habituales.</p>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>🔒 Candado Negativo Maestro</span>
+      <button class="copy-btn" data-copy="NO rain, NO falling streaks, NO vertical lines, NO falling lights, NO particles, NO magical sparkles, NO lens flare, NO floating elements, clean ambient air, static background, NO distorted hands, NO blurry faces.">Copiar</button>
+    </div>
+    <pre>NO rain, NO falling streaks, NO vertical lines, NO falling lights, NO particles, NO magical sparkles, NO lens flare, NO floating elements, clean ambient air, static background, NO distorted hands, NO blurry faces.</pre>
+  </div>
+
+  <h3 class="sec-sub">Resumen del Capítulo 3</h3>
+  <div class="callout example">
+    <span class="ct">Resumen</span>
+    <ul style="margin:0">
+      <li><b>Agnes Video 2.5 Flash</b> permite videos de hasta 12 segundos a 720p por 0 créditos.</li>
+      <li>Usa la opción de <b>Lienzo</b> y desvincula la imagen final.</li>
+      <li>Escribe las marcas con guiones fonéticos (ej. <code>Ze-I-As</code>) para un lip-sync sin errores.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: CAPÍTULO 4 =================== -->
+<section id="sec-c4" class="section">
+  <h2 class="sec-title"><span class="num-tag">04</span> Fase 3 — Escalado Profesional a 4K con VideoProc AI</h2>
+
+  <h3 class="sec-sub">Concepto Clave: Escalado por IA (Upscaling)</h3>
+  <p>Las herramientas de generación de video ilimitadas entregan clips en 720p o resoluciones menores. Para convertir este material en un producto comercial de alta definición, utilizamos <b>VideoProc AI</b>, un software de ingeniería de video que reconstruye los píxeles faltantes mediante algoritmos de aprendizaje profundo.</p>
+
+  <h3 class="sec-sub">Pasos Numerados y Accionables (Paso a Paso)</h3>
+  <ol class="steps">
+    <li>
+      <b>Paso 1: Descargar e instalar VideoProc AI</b><br>
+      <b>Acción:</b> descarga el instalador gratuito desde el enlace oficial (ver sección de Fuentes) e instálalo en tu computadora.<br>
+      <b>Motivo:</b> la versión gratuita te otorga <b>5 exportaciones completas a 4K sin marca de agua</b>.
+    </li>
+    <li>
+      <b>Paso 2: Abrir el software y seleccionar "Súper Resolución"</b><br>
+      <b>Acción:</b> al iniciar el programa, haz clic en la opción <b>Súper Resolución</b> (<em>Super Resolution</em>).<br>
+      <b>Motivo:</b> este módulo específico está diseñado para reescalar animación e imágenes generadas por IA aumentando la densidad de píxeles.
+    </li>
+    <li>
+      <b>Paso 3: Cargar el Video de 720p</b><br>
+      <b>Acción:</b> arrastra tu video exportado de Pavo AI a la interfaz del programa.<br>
+      <b>Motivo:</b> el programa analizará la tasa de fotogramas (FPS) y la resolución de origen.
+    </li>
+    <li>
+      <b>Paso 4: Configurar la Salida a 4K</b><br>
+      <b>Acción:</b> en el panel lateral derecho, selecciona la opción <b>4K</b> (resolución final de 3840 × 2160 o 2560 × 1440).<br>
+      <b>Motivo:</b> escalar a 4K garantiza la máxima nitidez para reproducir el contenido en televisores grandes o monitores de alta densidad sin pérdida de detalle.
+    </li>
+    <li>
+      <b>Paso 5: Procesar el Video (Ejecutar / RUN)</b><br>
+      <b>Acción:</b> haz clic en el botón inferior derecho <b>RUN</b>.<br>
+      <b>Motivo:</b> el software procesará el video en pocos segundos y lo guardará en la carpeta de destino de tu equipo.
+    </li>
+  </ol>
+
+  <h3 class="sec-sub">Tabla Comparativa de Calidad</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Parámetro</th><th>Video Original de Pavo AI</th><th>Video Mejorado con VideoProc AI</th></tr></thead>
+      <tbody>
+        <tr><td><b>Resolución</b></td><td>1280 × 720 (720p)</td><td><b style="color:var(--green)">3840 × 2160 (4K real)</b></td></tr>
+        <tr><td><b>Nitidez de Líneas</b></td><td>Suave / Ligeramente borrosa</td><td><b style="color:var(--green)">Líneas anime definidas y ultra-nítidas</b></td></tr>
+        <tr><td><b>Costo del Proceso</b></td><td>0 Créditos</td><td>Gratuito (Versión de prueba/Licencia)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sec-sub">Resumen del Capítulo 4</h3>
+  <div class="callout example">
+    <span class="ct">Resumen</span>
+    <ul style="margin:0">
+      <li>No intentes exportar en 4K directo desde Pavo AI para no gastar dinero/créditos.</li>
+      <li>Exporta siempre a <b>720p gratis</b> en Pavo AI y escala a <b>4K en tu computadora</b> con VideoProc AI.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: CAPÍTULO 5 =================== -->
+<section id="sec-c5" class="section">
+  <h2 class="sec-title"><span class="num-tag">05</span> Colección Maestra de Prompts y Recursos</h2>
+  <p>A continuación se presentan los prompts técnicos exactos extraídos de la documentación oficial de ZehIAs. Puedes copiarlos y adaptarlos a tus proyectos.</p>
+
+  <h3 class="sec-sub">Prompt 1 · Foto a Anime (Google Flow)</h3>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>🎨 Google Flow · @TuImagen</span>
+      <button class="copy-btn" data-copy-target="p1">Copiar</button>
+    </div>
+    <pre id="p1">Retrato en plano medio (Medium Shot - desde la cintura hacia arriba) en estilo anime moderno de alta definición (2D anime estético, líneas de dibujo limpias, sombreado cel-shading suave). El personaje mantiene fielmente los rasgos del sujeto de la imagen de referencia [@TuImagen]: joven con cabello negro peinado hacia adelante con flequillo texturizado, tez morena clara natural y mirada seria a la cámara. Viste un traje formal elegante de terno negro ajustado, camisa negra y corbata negra mate. El personaje conserva sus colores naturales de piel y ropa. El fondo es un estudio de diseño minimalista en escala de grises, en tonos predominantemente oscuros, negro y gris, con líneas de luz blanca suave e iluminación ambiental neutra. Encuadre cercano, composición equilibrada de anime realista, 8k, sin luces de colores RGB.</pre>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-faint);font-style:italic">Fuente: Documentación Técnica ZehIAs</p>
+
+  <h3 class="sec-sub">Prompt 2 · De Imagen Anime a Video con Lip-Sync (Pavo AI)</h3>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>🎬 Pavo AI · Agnes Video 2.5 Flash</span>
+      <button class="copy-btn" data-copy-target="p2">Copiar</button>
+    </div>
+    <pre id="p2">[ESTRUCTURA Y CÁMARA]:
+0.0s – 6.5s: Plano medio frontal. La cámara realiza un suave acercamiento continuo (slow zoom-in) hacia el personaje. El personaje anime de terno negro habla directamente a la cámara mientras mueve sus manos de forma natural gesticulando al explicar.
+6.5s – 10.0s: [CAMBIO DE ÁNGULO - HARD CUT]. Plano medio de tres cuartos desde el perfil izquierdo (screen-left). El personaje gira fluidamente la cabeza hacia la nueva posición de la cámara, mantiene el diálogo sin pausar, sonríe con confianza y hace un guiño de ojo izquierdo a la cámara mientras levanta la mano derecha haciendo un gesto de pulgar arriba ("like").
+
+[ILUMINACIÓN Y ENTORNO LIMPIO]:
+Fondo de estudio sobrio en escala de grises. Las líneas blancas del fondo mantienen una iluminación fija, tenue y estática. Aire completamente limpio y despejado.
+
+[GUION Y LIPSYNC FONÉTICO]:
+"Es increíble, ¿no? Lo que acabas de ver y yo fuimos creados con inteligencia artificial de manera gratuita, y lo puedes usar de manera ilimitada gracias a Ze-I-As."
+
+[CANDADOS NEGATIVOS / RESTRICCIONES]:
+NO rain, NO falling streaks, NO vertical lines, NO falling lights, NO particles, NO magical sparkles, NO lens flare, NO floating elements, clean ambient air, static background.</pre>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-faint);font-style:italic">Fuente: Documentación Técnica ZehIAs</p>
+
+  <h3 class="sec-sub">Prompt 3 · Hoja de Personaje Principal (Character Sheet)</h3>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>📋 @PersonajePrincipal</span>
+      <button class="copy-btn" data-copy-target="p3">Copiar</button>
+    </div>
+    <pre id="p3">Hoja de diseño de personaje anime completo (Anime character design sheet, multiple angles, full body and facial expressions). Mantiene los rasgos de la imagen de referencia: joven de cabello negro con flequillo texturizado, piel morena clara, rostro anguloso. Muestra 3 vistas en cuerpo completo: de frente, perfil y espalda. Muestra 3 expresiones faciales: seria, sonriente y hablando. Viste un traje formal compuesto por terno negro ajustado, camisa negra y corbata negra mate. Fondo gris claro minimalista, líneas limpias de anime 2D, sombreado cel-shading suave, diseño en escala de grises y color natural de piel.</pre>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-faint);font-style:italic">Fuente: Documentación Técnica ZehIAs</p>
+
+  <h3 class="sec-sub">Prompt 4 · Personaje Secundario y Escenario</h3>
+
+  <h4>4.1 · Personaje Secundario (<code>@PersonajeSecundario</code>)</h4>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>📋 Personaje Secundario</span>
+      <button class="copy-btn" data-copy-target="p4a">Copiar</button>
+    </div>
+    <pre id="p4a">Hoja de diseño de personaje anime secundario. Hombre joven con aspecto agotado y triste, cabello negro despeinado, tez morena clara. Viste ropa urbana desgastada y sucia: polera con capucha gris gastada, pantalones oscuros rotos y zapatillas viejas. Diseño de personaje en 2D estilo anime realista, líneas limpias, sombreado suave, cuerpo completo con vistas de frente y perfil. Fondo neutro gris.</pre>
+  </div>
+
+  <h4>4.2 · Escenario Urbano (<code>@EscenarioUrbano</code>)</h4>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>🌃 Escenario Urbano</span>
+      <button class="copy-btn" data-copy-target="p4b">Copiar</button>
+    </div>
+    <pre id="p4b">Fondo de escenario estilo anime cinematográfico moderno. Calle urbana de noche con estética minimalista en escala de grises. Edificios de diseño moderno con líneas rectas y tubos de luz LED blanca en las fachadas. Acera amplia de concreto. Al fondo se aprecian siluetas y peatones vestidos de forma casual caminando con normalidad en perspectiva. Encuadre de plano medio-largo a la altura de los ojos, iluminación neutra y sobria, escala arquitectónica realista, estilo gráfico de anime 2D en tonos oscuros y grises.</pre>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-faint);font-style:italic">Fuente: Documentación Técnica ZehIAs</p>
+
+  <h4>4.3 · Composición Final (<code>@EscenaInicial</code>)</h4>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>🎞️ Fotograma Clave de Inicio</span>
+      <button class="copy-btn" data-copy-target="p4c">Copiar</button>
+    </div>
+    <pre id="p4c">Escena de anime cinematográfico en plano medio de ángulo normal. Un hombre joven con polera desgastada está sentado en el suelo, apoyado de espalda contra la pared de un edificio oscuro, con expresión triste y una billetera vacía abierta a su lado en la acera. A su lado, de pie a una escala anatómica proporcional y correcta, está el personaje principal vistiendo un elegante terno negro ajustado, mirando hacia abajo con preocupación y empatía. Al fondo de la acera, se observan peatones de paso caminando con normalidad en una perspectiva coherente. Fondo minimalista de arquitectura oscura con luces LED neutras en blanco y negro. Ilustración 2D de anime detallada, sombreado cel-shading limpio, sin distorsión de proporciones.</pre>
+  </div>
+
+  <h3 class="sec-sub">Prompt 5 · Escena Completa de 12 Segundos con Transformación</h3>
+  <div class="prompt-block">
+    <div class="prompt-head">
+      <span>🎬 Pavo AI · Escena 12s</span>
+      <button class="copy-btn" data-copy-target="p5">Copiar</button>
+    </div>
+    <pre id="p5">[ESTRUCTURA DE ESCENA Y CAMBIOS DE CÁMARA (12s Total)]:
+0.0s – 3.0s: Plano medio-largo. El personaje principal de terno negro camina por la calle oscura, se detiene al ver al hombre tirado en el suelo junto a su billetera vacía y le pregunta con preocupación.
+3.0s – 6.0s: [CÁMARA CORTE PLANO CERCANO - HARD CUT]. Enfoque en el hombre en el suelo. Habla con expresión de desolación sosteniendo la billetera. El personaje de terno se agacha, extiende el brazo y le entrega un ticket brillante con el texto "ZehIAs".
+6.0s – 9.0s: [CAMBIO DE ÁNGULO Y TRANSFORMACIÓN]. Plano medio de tres cuartos. Una ráfaga suave de energía blanca envuelve al hombre en el suelo: su ropa desgastada se transforma instantáneamente en un terno negro impecable.
+9.0s – 12.0s: [CÓDIGO DE CIERRE Y GESTO]. Plano medio frontal de ambos de pie. El hombre recién transformado le da un estrechón de manos firme al personaje principal, mira a la cámara sonriendo y hace un gesto de aprobación con el pulgar arriba ("like").
+
+[GUION Y LIPSYNC FONÉTICO]:
+Personaje Principal (1.5s): "¿Qué te pasó, amigo?"
+Hombre en el suelo (3.5s): "Gasté todos mis ahorros en suscripciones de IA que no sirven..."
+Personaje Principal (5.5s): "Toma esto. Ze-I-As es la solución ilimitada."
+Hombre transformado (10.0s): "¡Increíble! Muchas gracias, Ze-I-As."
+
+[ILUMINACIÓN Y ENTORNO]:
+Fondo urbano sobrio en blanco y negro. Luces LED de fondo fijas y tenue iluminación neutra. Aire limpio y libre de lluvia o partículas innecesarias.
+
+[CANDADOS NEGATIVOS / RESTRICCIONES]:
+NO rain, NO falling streaks, NO vertical lines, NO falling lights, NO optical dust, NO distorted hands, NO blurry faces, clean anime 24fps, fluid clothing shift.</pre>
+  </div>
+  <p style="font-size:12.5px;color:var(--text-faint);font-style:italic">Fuente: Documentación Técnica ZehIAs</p>
+</section>
+
+<!-- =================== SECCIÓN: CAPÍTULO 6 =================== -->
+<section id="sec-c6" class="section">
+  <h2 class="sec-title"><span class="num-tag">06</span> Cierre del Tutorial y Material Complementario</h2>
+
+  <h3 class="sec-sub">1 · Resumen de Todo lo Aprendido</h3>
+  <p>En este tutorial has aprendido el flujo de trabajo profesional para crear videos con IA sin restricciones financieras:</p>
+  <ol class="steps">
+    <li><b>Google Flow:</b> diseña imágenes y personajes manteniendo coherencia mediante hojas de diseño (<code>Character Sheets</code>) y referencias.</li>
+    <li><b>Pavo AI:</b> anima las imágenes a 720p a costo 0 mediante el modelo <em>Agnes Video 2.5 Flash</em>, controlando cámaras por segundo y guiones fonéticos.</li>
+    <li><b>VideoProc AI:</b> escala el video resultante a 4K de manera local en tu computadora.</li>
+  </ol>
+
+  <h3 class="sec-sub">2 · Lista de Conceptos Clave</h3>
+  <div class="grid-2">
+    <div class="card"><b style="color:var(--accent)">Agnes Video 2.5 Flash</b><p style="margin:6px 0 0;font-size:14px">Modelo de generación de video de Pavo AI que no consume créditos.</p></div>
+    <div class="card"><b style="color:var(--accent)">Character Sheet</b><p style="margin:6px 0 0;font-size:14px">Imagen de referencia que contiene múltiples vistas de un personaje para mantener su consistencia.</p></div>
+    <div class="card"><b style="color:var(--accent)">Hard Cut</b><p style="margin:6px 0 0;font-size:14px">Corte directo de cámara de un ángulo a otro dentro del prompt.</p></div>
+    <div class="card"><b style="color:var(--accent)">Guion Fonético</b><p style="margin:6px 0 0;font-size:14px">Separación de palabras clave con guiones para asegurar una dicción y lip-sync impecable.</p></div>
+    <div class="card"><b style="color:var(--accent)">Candado Negativo</b><p style="margin:6px 0 0;font-size:14px">Restricciones de texto que eliminan distorsiones visuales nemotécnicas o ambientales.</p></div>
+    <div class="card"><b style="color:var(--accent)">Super Resolution</b><p style="margin:6px 0 0;font-size:14px">Proceso de software que aumenta la resolución de un video de 720p a 4K.</p></div>
+  </div>
+
+  <h3 class="sec-sub">3 · Errores que NUNCA deben cometerse</h3>
+  <div class="callout err">
+    <span class="ct">Error 1</span>
+    <p style="margin:0"><b>🚫 NUNCA selecciones un modelo de pago en Pavo AI para pruebas básicas:</b> si no eliges <em>Agnes Video 2.5 Flash</em>, consumirás tus créditos rápidamente.</p>
+  </div>
+  <div class="callout err">
+    <span class="ct">Error 2</span>
+    <p style="margin:0"><b>🚫 NUNCA intentes exportar en 2K o 4K directamente en la web de Pavo AI:</b> esto activará el cobro de créditos. Exporta siempre a 720p gratis y reescala en VideoProc AI.</p>
+  </div>
+  <div class="callout err">
+    <span class="ct">Error 3</span>
+    <p style="margin:0"><b>🚫 NUNCA dejes conectada la segunda imagen si quieres una animación fluida:</b> elimina el vínculo de la imagen final para que la IA no cree transiciones forzadas.</p>
+  </div>
+  <div class="callout err">
+    <span class="ct">Error 4</span>
+    <p style="margin:0"><b>🚫 NUNCA escribas marcas o nombres raros sin guiones fonéticos:</b> escribir palabras como "ZehIAs" directamente provocará que la IA distorsione la boca del personaje.</p>
+  </div>
+
+  <h3 class="sec-sub">4 · Recomendaciones para Seguir Aprendiendo</h3>
+  <ul>
+    <li>Practica creando tus propios personajes cambiando las descripciones de ropa y peinado.</li>
+    <li>Explora la sección <b>Explorar / Tendencias</b> dentro de Pavo AI para analizar los prompts que utilizan otros creadores.</li>
+    <li>Experimenta con el modo <b>Short Drama</b> para estructurar historias episódicas más complejas.</li>
+  </ul>
+
+  <h3 class="sec-sub">5 · Ejercicios Prácticos con Soluciones Explicadas</h3>
+
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <span>📝 Ejercicio 1 · Solución a un Lip-Sync desincronizado</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <p><b>Problema:</b> creaste un video donde el personaje dice "Inteligencia Artificial", pero sus labios se mueven de forma extraña y la voz suena cortada.</p>
+      <p><b>Pregunta:</b> ¿cómo corriges este error?</p>
+      <div class="callout example">
+        <span class="ct">Solución explicada</span>
+        <p style="margin:0">Modifica el guion en el prompt aplicando marcas fonéticas. En lugar de escribir <code>"Inteligencia Artificial"</code>, escribe <code>"In-te-li-gen-cia Ar-ti-fi-cial"</code>. Esto le marcará a la IA el tiempo exacto para cada apertura de boca.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <span>📝 Ejercicio 2 · Eliminación de elementos indeseados</span>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <p><b>Problema:</b> al generar tu video urbano, aparecen luces flotantes y destellos mágicos que arruinan la escena realista.</p>
+      <p><b>Pregunta:</b> ¿qué sección del prompt debes ajustar?</p>
+      <div class="callout example">
+        <span class="ct">Solución explicada</span>
+        <p style="margin:0">Añade al apartado de <b>Candados Negativos</b> la instrucción: <code>NO falling lights, NO magical sparkles, NO floating elements, static background</code>. Esto filtra la generación de esos patrones visuales.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="sec-sub">6 · Glosario de Términos Técnicos</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+      <tbody>
+        <tr><td><b>Cel-Shading</b></td><td>Estilo de renderizado no fotorrealista diseñado para hacer que los gráficos 3D/IA parezcan dibujados a mano en 2D (estilo cómic o anime).</td></tr>
+        <tr><td><b>Lip-Sync</b></td><td>Sincronización de los movimientos de los labios de un avatar animado con una pista de voz hablada.</td></tr>
+        <tr><td><b>Prompt</b></td><td>Instrucción de texto detallada que se le proporciona a un modelo de IA para generar un resultado específico.</td></tr>
+        <tr><td><b>Upscaling</b></td><td>Proceso algorítmico para incrementar el tamaño y resolución de una imagen o video digital.</td></tr>
+        <tr><td><b>Lienzo (Canvas)</b></td><td>Interfaz gráfica que permite organizar visualmente fotogramas, prompts e imágenes de referencia.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: EJERCICIOS =================== -->
+<section id="sec-ejercicios" class="section">
+  <h2 class="sec-title"><span class="num-tag">📝</span> Ejercicios Educativos</h2>
+
+  <p>
+    Colección de <b>10 ejercicios educativos</b> diseñados para reforzar los conceptos del tutorial
+    <em>"Dominio de Video IA"</em>. Cada ejercicio incluye su <b>enunciado</b>, una <b>solución paso a paso</b>,
+    la <b>explicación causal</b> de por qué esa es la respuesta correcta y el <b>error típico</b> que debes evitar.
+  </p>
+
+  <div class="callout info">
+    <span class="ct">Progresión pedagógica</span>
+    <p style="margin:0 0 6px">Los ejercicios están organizados en <b>dos bloques</b> y siguen una dificultad creciente:</p>
+    <ul style="margin:0">
+      <li><span class="diff-badge facil">Fácil</span> &nbsp;Conceptos iniciales y definiciones.</li>
+      <li><span class="diff-badge media">Media</span> &nbsp;Relación entre herramientas, ordenamiento de fases y detección de errores.</li>
+      <li><span class="diff-badge dificil">Difícil</span> &nbsp;Casos prácticos, análisis y escritura de prompts.</li>
+    </ul>
+  </div>
+
+  <p style="font-size:14px;color:var(--text-dim);font-style:italic">
+    💡 <b>Recomendación:</b> intenta resolver cada ejercicio por tu cuenta antes de desplegar la solución.
+    Pulsa sobre cada tarjeta para expandir el contenido.
+  </p>
+
+  <!-- ========== BLOQUE 1 ========== -->
+  <h3 class="sec-sub">Bloque 1 · Ejercicios 1 a 5</h3>
+
+  <!-- Ejercicio 1 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 01</span>
+        <span class="ej-type">Opción múltiple</span>
+        <div class="ej-meta"><span class="diff-badge facil">Fácil</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Según el tutorial, ¿cuál es el principal beneficio que aporta la creación de video con inteligencia artificial a personas sin conocimientos de diseño o animación?</p>
+      <ul style="list-style:none;margin-left:0;padding-left:0">
+        <li><b>A)</b> Permite reemplazar por completo a los equipos profesionales de cine en producciones de gran presupuesto.</li>
+        <li><b>B)</b> Permite producir cortos, anuncios e historias animadas en resolución 4K de forma gratuita e ilimitada sin saber diseñar ni animar.</li>
+        <li><b>C)</b> Garantiza que cualquier video generado se vuelva viral automáticamente en redes sociales.</li>
+        <li><b>D)</b> Elimina la necesidad de tener una computadora, ya que todo se ejecuta en el navegador.</li>
+      </ul>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El tutorial indica en la Introducción que la creación de video con IA sirve para que "cualquier persona, sin necesidad de saber diseñar, animar en 3D o utilizar complejos programas de edición, pueda producir cortos, anuncios, historias animadas o contenido para redes sociales en resolución 4K de forma 100% gratuita e ilimitada".</li>
+        <li>La opción <b>B</b> reproduce fielmente esta idea.</li>
+        <li>Las opciones A, C y D introducen afirmaciones que el tutorial no respalda: no se habla de reemplazar equipos profesionales, ni de viralidad automática, ni de eliminar la computadora (de hecho, VideoProc AI es un software de escritorio).</li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">La respuesta correcta es la <b>B</b> porque el tutorial enfatiza la democratización de la producción audiovisual: la IA elimina las barreras técnicas y financieras que tradicionalmente impedían crear animaciones. Las opciones incorrectas fallan porque exageran o distorsionan el alcance real de la herramienta: A confunde "democratizar" con "reemplazar", C promete un resultado que depende de muchos factores externos, y D ignora que la Fase 3 requiere instalar software local.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría elegir la opción A por asociar "calidad profesional" con "reemplazo de profesionales". El tutorial nunca afirma eso; solo dice que se puede alcanzar calidad de exportación profesional. Para evitarlo, hay que distinguir entre <b>"calidad profesional"</b> y <b>"reemplazo de la industria"</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 2 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 02</span>
+        <span class="ej-type">Emparejamiento</span>
+        <div class="ej-meta"><span class="diff-badge media">Media</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Relaciona cada herramienta del ecosistema con la función principal que cumple dentro del flujo de trabajo del tutorial. Escribe la letra correspondiente al lado de cada número.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Herramienta</th><th>Función</th></tr></thead>
+          <tbody>
+            <tr><td>1. Google Flow</td><td>A. Escalar el video de 720p a 4K mediante Súper Resolución.</td></tr>
+            <tr><td>2. Pavo AI (Agnes Video 2.5 Flash)</td><td>B. Diseñar personajes, escenarios y fotogramas clave con consistencia visual.</td></tr>
+            <tr><td>3. VideoProc AI</td><td>C. Animar imágenes, generar voz y lograr sincronización labial (lip-sync).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El Capítulo 1 describe <b>Google Flow</b> como la herramienta de "generación y transformación de imágenes" usada para "diseñar los personajes y la composición visual inicial (character sheets y fotogramas clave)". → <b>1-B</b>.</li>
+        <li><b>Pavo AI</b> se describe como la "plataforma de generación de video con IA" que permite "animar las imágenes y lograr sincronización labial exacta (lip-sync)". → <b>2-C</b>.</li>
+        <li><b>VideoProc AI</b> se describe como el "software de procesamiento de video por IA" cuya función "Súper Resolución" mejora la calidad "desde 720p (o 360p) hasta 4K real". → <b>3-A</b>.</li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">Cada herramienta ocupa una fase distinta del flujo: Google Flow produce imágenes fijas (materia prima visual), Pavo AI las convierte en video con movimiento y voz (animación), y VideoProc AI mejora la resolución del video ya generado (postproducción). La relación es causal: sin imágenes no hay qué animar, y sin video animado no hay qué escalar.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">Confundir Google Flow con Pavo AI, asignando a Google Flow la función de animar. El tutorial es explícito: <b>Google Flow genera imágenes, no videos</b>. Para evitarlo, recordar la analogía del tutorial: Google Flow es el "departamento de vestuario y fotografía", no el "equipo de rodaje".</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 3 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 03</span>
+        <span class="ej-type">Ordenamiento</span>
+        <div class="ej-meta"><span class="diff-badge media">Media</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Ordena correctamente las siguientes acciones según el flujo de trabajo de tres fases descrito en el tutorial. Escribe los números del 1 al 5 en el orden correcto.</p>
+      <ul>
+        <li>( &nbsp; ) Escalar el video a 4K con VideoProc AI usando Súper Resolución.</li>
+        <li>( &nbsp; ) Generar la Hoja de Personaje (Character Sheet) en Google Flow.</li>
+        <li>( &nbsp; ) Exportar el video final en 4K sin marca de agua.</li>
+        <li>( &nbsp; ) Animar el fotograma clave en Pavo AI con Agnes Video 2.5 Flash.</li>
+        <li>( &nbsp; ) Crear la composición inicial (fotograma clave) uniendo personajes y escenario.</li>
+      </ul>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El flujo comienza con el diseño en Google Flow: primero se genera la <b>Hoja de Personaje (Character Sheet)</b>. → Posición 1.</li>
+        <li>Luego se crea la <b>composición inicial</b> uniendo personajes y escenario en un solo fotograma clave. → Posición 2.</li>
+        <li>Después se <b>anima ese fotograma clave</b> en Pavo AI con Agnes Video 2.5 Flash. → Posición 3.</li>
+        <li>A continuación se <b>escala el video resultante a 4K</b> con VideoProc AI. → Posición 4.</li>
+        <li>Finalmente se <b>exporta el video final en 4K</b> sin marca de agua. → Posición 5.</li>
+      </ol>
+
+      <div class="callout example">
+        <span class="ct">Orden correcto</span>
+        <p style="margin:0"><b>2 → 5 → 4 → 3 → 1</b> según la numeración original del enunciado (Character Sheet → Composición → Animación → Escalado → Exportación).</p>
+      </div>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">El orden es causal porque cada fase depende de la anterior: no se puede animar lo que no se ha diseñado, no se puede escalar lo que no se ha animado, y no se puede exportar lo que no se ha escalado. El tutorial presenta este flujo como una secuencia lineal e interdependiente.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">Colocar la exportación antes del escalado. El estudiante podría pensar que primero se exporta y luego se escala, pero el tutorial indica que el escalado ocurre dentro de VideoProc AI y la exportación es el paso final de ese mismo proceso. Para evitarlo, recordar que <b>VideoProc AI procesa y guarda el archivo ya escalado</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 4 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 04</span>
+        <span class="ej-type">Verdadero/Falso con justificación</span>
+        <div class="ej-meta"><span class="diff-badge dificil">Difícil</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Lee la siguiente afirmación y determina si es verdadera o falsa. Justifica tu respuesta con base en el tutorial.</p>
+      <blockquote class="hero-quote" style="margin:12px 0">
+        "Para mantener la consistencia visual de un personaje a lo largo de varias escenas, basta con escribir una descripción detallada en cada prompt, sin necesidad de usar imágenes de referencia ni etiquetas @."
+      </blockquote>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El Capítulo 2 indica que el error más común en animación con IA es que "el personaje cambia de rostro o de ropa entre escena y escena".</li>
+        <li>La solución que propone el tutorial es usar una "Hoja de Personaje (Character Sheet)" y "etiquetas de referencia (como @PersonajePrincipal o @TuImagen)".</li>
+        <li>El tutorial también menciona en los errores frecuentes que usar descripciones vagas como "un chico anime bonito" provoca que "la IA cambiará la cara del personaje en cada intento".</li>
+        <li>Por lo tanto, la afirmación es <b style="color:var(--red)">FALSA</b>: no basta con descripciones textuales; se requieren imágenes de referencia y etiquetas @ para garantizar consistencia.</li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">La consistencia visual falla porque la IA, sin una referencia visual fija, interpreta cada descripción de manera ligeramente distinta en cada generación. Las etiquetas @ y las Character Sheets actúan como <b>"anclas visuales"</b> que le indican a la IA exactamente cómo debe verse el personaje desde múltiples ángulos, eliminando la variabilidad. Sin ellas, el personaje muta entre escenas.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría responder "verdadero" pensando que una descripción muy detallada es suficiente. El tutorial demuestra lo contrario: incluso con detalles concretos, sin referencia visual la IA puede cambiar rasgos. Para evitarlo, recordar que el tutorial insiste en las <b>etiquetas @</b> y las <b>hojas de diseño</b> como herramientas indispensables.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 5 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 05</span>
+        <span class="ej-type">Caso práctico / Detección de errores</span>
+        <div class="ej-meta"><span class="diff-badge dificil">Difícil</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Un creador novato está diseñando su primer personaje en Google Flow. Escribe el siguiente prompt:</p>
+      <div class="prompt-block">
+        <div class="prompt-head"><span>Prompt del creador</span></div>
+        <pre>"Crea un chico anime guapo y simpático con ropa moderna, que esté en una calle."</pre>
+      </div>
+      <p>Luego genera la imagen y, al repetir el proceso para otra escena, el personaje aparece con otro color de pelo, otra ropa y rasgos faciales distintos. Además, al unir este personaje con un fondo de estilo caricatura infantil, el resultado se ve incoherente.</p>
+      <p><b>Pregunta:</b> Identifica al menos tres errores que cometió el creador según el tutorial y propone una solución concreta para cada uno.</p>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>
+          <b>Error 1: Descripción vaga.</b> El prompt usa términos subjetivos ("guapo", "simpático", "moderna") sin especificar detalles concretos. El tutorial indica que hay que "especificar detalles concretos (flequillo texturizado, terno negro ajustado, piel morena clara)".<br>
+          <b>Solución:</b> Reescribir el prompt con detalles específicos: color de pelo, peinado, tipo de ropa, expresión, etc.
+        </li>
+        <li>
+          <b>Error 2: No usar etiquetas de referencia ni Character Sheet.</b> El creador no asignó una etiqueta @ ni generó una hoja de personaje. El tutorial recomienda generar una Character Sheet con múltiples vistas y usar etiquetas como <code>@PersonajePrincipal</code>.<br>
+          <b>Solución:</b> Generar una Hoja de Personaje con 3 vistas (frente, perfil, espalda) y 3 expresiones, y asignarle la etiqueta <code>@PersonajePrincipal</code>.
+        </li>
+        <li>
+          <b>Error 3: Mezclar estilos gráficos.</b> El personaje es de estilo anime y el fondo es de "caricatura infantil". El tutorial advierte contra "mezclar estilos gráficos" y recomienda "mantener palabras clave de estilo unificadas en todos los prompts".<br>
+          <b>Solución:</b> Unificar el estilo gráfico en todos los prompts: por ejemplo, "2D anime estético, cel-shading suave, escala de grises".
+        </li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">Los tres errores comparten una misma raíz: <b>falta de anclaje visual y estilístico</b>. Sin detalles concretos, la IA "improvisa" y varía el resultado. Sin Character Sheet ni etiquetas, no hay memoria visual del personaje. Sin unidad de estilo, los elementos no comparten un lenguaje gráfico común y el resultado se ve discordante. La solución ataca las tres causas: especificidad, referencia visual y coherencia estilística.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría identificar solo el error de "descripción vaga" y pasar por alto la mezcla de estilos o la ausencia de Character Sheet. Para evitarlo, revisar sistemáticamente los tres aspectos que el tutorial enfatiza: <b>detalle concreto</b>, <b>referencia visual (@)</b> y <b>unidad de estilo</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== BLOQUE 2 ========== -->
+  <h3 class="sec-sub">Bloque 2 · Ejercicios 6 a 10</h3>
+
+  <!-- Ejercicio 6 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 06</span>
+        <span class="ej-type">Opción múltiple</span>
+        <div class="ej-meta"><span class="diff-badge facil">Fácil</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>En Pavo AI, ¿cuál es la condición principal para generar videos sin gastar créditos según el tutorial?</p>
+      <ul style="list-style:none;margin-left:0;padding-left:0">
+        <li><b>A)</b> Seleccionar la resolución 1080p o 2K para obtener mejor calidad.</li>
+        <li><b>B)</b> Usar el modelo Agnes Video 2.5 Flash y configurar la resolución en 720p.</li>
+        <li><b>C)</b> Vincular siempre la segunda imagen en el modo First &amp; Last Frame.</li>
+        <li><b>D)</b> Exportar directamente en 4K desde la plataforma web.</li>
+      </ul>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El Capítulo 3 indica que el modelo <b>Agnes Video 2.5 Flash</b> es "100% gratuito e ilimitado" y que "si eliges otros modelos, la plataforma te cobrará créditos".</li>
+        <li>También señala que "elegir 720p dentro de Agnes Video 2.5 Flash mantiene el costo de generación en 0 créditos" y que "si seleccionas 1080p o 2K directamente en la web, la plataforma te exigirá plan de pago o consumirá créditos".</li>
+        <li>La opción <b>B</b> combina ambas condiciones: modelo correcto + resolución 720p.</li>
+        <li>Las opciones A, C y D describen acciones que el tutorial advierte como errores que consumen créditos o generan problemas.</li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">El costo cero depende de <b>dos factores simultáneos</b>: el modelo (Agnes Video 2.5 Flash) y la resolución (720p). Si falta uno de los dos, la plataforma activa el cobro de créditos. La opción B es la única que respeta ambas condiciones. Las demás opciones violan al menos una de las dos reglas.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría elegir la opción A pensando que "mejor resolución = mejor resultado sin costo". El tutorial es claro: <b>1080p o 2K activan el cobro</b>. Para evitarlo, recordar que el flujo gratuito exige exportar a 720p y escalar después con VideoProc AI.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 7 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 07</span>
+        <span class="ej-type">Respuesta corta</span>
+        <div class="ej-meta"><span class="diff-badge media">Media</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>En el modo Lienzo (Canvas) de Pavo AI, al usar la opción "First &amp; Last Frame", el tutorial indica que se debe eliminar el vínculo de la segunda imagen (haciendo clic en la X).</p>
+      <p><b>Pregunta:</b> ¿Por qué es necesario eliminar ese vínculo y qué consecuencia tiene no hacerlo?</p>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El Capítulo 3, Paso 4, explica que si mantienes la segunda imagen vinculada, "la IA intentará hacer una transición forzada".</li>
+        <li>Al eliminarla, "la IA animará libremente a partir del primer fotograma siguiendo tu prompt".</li>
+        <li>Por lo tanto, la razón es <b>evitar una transición forzada</b> entre dos imágenes que no forman parte de la misma secuencia animada.</li>
+        <li>La consecuencia de no eliminarla es que el video resultante incluirá una <b>transición no deseada</b> que rompe la fluidez de la animación.</li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">La función "First &amp; Last Frame" está diseñada para crear una <b>interpolación</b> entre dos imágenes. Si solo se desea animar a partir de una imagen inicial, dejar la segunda imagen vinculada obliga a la IA a inventar un puente visual entre ambas, lo que produce movimientos antinaturales o cortes extraños. Al desvincularla, la IA solo tiene un punto de partida y puede generar movimiento libre según el prompt.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría pensar que dejar la segunda imagen "ayuda" a la IA a saber dónde terminar. El tutorial demuestra lo contrario: en este flujo se busca <b>animación libre desde un solo fotograma</b>. Para evitarlo, recordar que el objetivo es animar una escena, no hacer una transición entre dos imágenes fijas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 8 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 08</span>
+        <span class="ej-type">Análisis de caso / Escritura de prompt</span>
+        <div class="ej-meta"><span class="diff-badge dificil">Difícil</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Un creador quiere generar un video de 12 segundos donde su personaje principal (un joven de terno negro) habla a la cámara, luego hay un cambio de ángulo y el personaje hace un gesto de pulgar arriba. El creador escribe el siguiente prompt:</p>
+      <div class="prompt-block">
+        <div class="prompt-head"><span>Prompt original (insuficiente)</span></div>
+        <pre>"El personaje habla a la cámara y luego hace un gesto. Fondo limpio."</pre>
+      </div>
+      <p>El resultado es un video donde no hay cambio de cámara, el personaje habla de forma monótona y el gesto final no aparece.</p>
+      <p><b>Pregunta:</b> Reescribe el prompt aplicando la estructura por marcas de tiempo y cambios de cámara (Hard Cut) que propone el tutorial. Incluye al menos dos segmentos de tiempo, un Hard Cut y una indicación de iluminación/entorno limpio.</p>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El tutorial indica que dividir el prompt por marcas de tiempo (ej. <code>0.0s – 3.0s: Plano medio-largo...</code>) le indica a la IA exactamente cuándo hacer cortes de cámara y cuándo activar cada frase.</li>
+        <li>Se debe estructurar el prompt en secciones: <code>[ESTRUCTURA Y CÁMARA]</code>, <code>[ILUMINACIÓN Y ENTORNO LIMPIO]</code>, <code>[GUION Y LIPSYNC FONÉTICO]</code> y <code>[CANDADOS NEGATIVOS]</code>.</li>
+      </ol>
+
+      <p><b>Ejemplo de reescritura:</b></p>
+      <div class="prompt-block">
+        <div class="prompt-head"><span>Prompt reescrito</span></div>
+        <pre>0.0s – 6.5s: Plano medio frontal. La cámara realiza un suave acercamiento continuo (slow zoom-in) hacia el personaje. El personaje habla directamente a la cámara mientras mueve sus manos de forma natural.
+6.5s – 12.0s: [CAMBIO DE ÁNGULO - HARD CUT]. Plano medio de tres cuartos desde el perfil izquierdo. El personaje gira fluidamente la cabeza, sonríe con confianza y hace un gesto de pulgar arriba ("like").
+[ILUMINACIÓN Y ENTORNO LIMPIO]: Fondo de estudio sobrio en escala de grises. Iluminación fija, tenue y estática. Aire completamente limpio y despejado.
+[CANDADOS NEGATIVOS]: NO rain, NO falling streaks, NO vertical lines, NO falling lights, NO particles, NO magical sparkles, NO lens flare, NO floating elements, clean ambient air, static background.</pre>
+      </div>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">La IA necesita <b>instrucciones explícitas y secuenciadas</b> para ejecutar cambios de cámara y acciones específicas en momentos concretos. Sin marcas de tiempo, la IA no sabe cuándo debe ocurrir el Hard Cut ni cuándo debe aparecer el gesto. La estructura por segmentos temporales convierte una instrucción vaga en una <b>coreografía precisa</b>, permitiendo que la IA sincronice cámara, acción y diálogo.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría escribir un prompt detallado pero sin marcas de tiempo, pensando que la IA "entiende" la secuencia por el orden de las frases. El tutorial insiste en las marcas temporales explícitas. Para evitarlo, usar siempre el formato <code>Xs – Ys: descripción</code> para cada segmento.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 9 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 09</span>
+        <span class="ej-type">Detección de errores / Respuesta corta</span>
+        <div class="ej-meta"><span class="diff-badge media">Media</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Un creador escribe el siguiente guion en su prompt de Pavo AI:</p>
+      <div class="prompt-block">
+        <div class="prompt-head"><span>Guion con error</span></div>
+        <pre>"Hola, gracias por usar ZehIAs. Es una herramienta increíble."</pre>
+      </div>
+      <p>Al generar el video, la IA pronuncia "ZehIAs" como una sola palabra corrida y la boca del personaje se mueve de forma extraña en esa palabra.</p>
+      <p><b>Pregunta:</b> ¿Qué error cometió el creador según el "Consejo de Oro de ZehIAs" y cómo debe corregir el guion?</p>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El tutorial indica que para evitar que la IA pronuncie mal el español o genere gesticulaciones extrañas, se deben aplicar "marcas fonéticas separadas por guiones en palabras compuestas o nombres de marca".</li>
+        <li>El ejemplo del tutorial muestra que "ZehIAs" debe escribirse como <b>"Ze-I-As"</b>.</li>
+        <li>Por lo tanto, el error es <b>no haber aplicado las marcas fonéticas</b>.</li>
+        <li>La corrección sería: <code>"Hola, gracias por usar Ze-I-As. Es una herramienta increíble."</code></li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">La IA interpreta las palabras sin guiones como unidades léxicas únicas y aplica reglas de pronunciación que pueden no coincidir con la fonética deseada. Al separar con guiones, se le indica a la IA que debe <b>articular cada sílaba de forma independiente</b>, lo que fuerza una dicción más clara y una sincronización labial más precisa. Sin guiones, la IA "adivina" la pronunciación y puede fallar.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría pensar que basta con escribir la palabra correctamente según la ortografía. El tutorial demuestra que la IA <b>no respeta la ortografía estándar</b> para nombres inventados o marcas. Para evitarlo, aplicar siempre guiones fonéticos en nombres propios, marcas o palabras compuestas.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ejercicio 10 -->
+  <div class="acc" data-acc>
+    <div class="acc-head">
+      <div class="ej-head">
+        <span class="ej-num">EJ 10</span>
+        <span class="ej-type">Caso práctico integral / Opción múltiple con justificación</span>
+        <div class="ej-meta"><span class="diff-badge dificil">Difícil</span></div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="acc-body">
+      <span class="ej-label">Enunciado</span>
+      <p>Un creador ha completado su video en Pavo AI a 720p y ahora quiere llevarlo a 4K. Sigue estos pasos:</p>
+      <ol>
+        <li>Abre VideoProc AI y selecciona "Súper Resolución".</li>
+        <li>Carga el video de 720p.</li>
+        <li>Configura la salida a 4K.</li>
+        <li>Hace clic en "RUN".</li>
+      </ol>
+      <p><b>Pregunta:</b> ¿Cuál de las siguientes afirmaciones sobre este proceso es correcta según el tutorial?</p>
+      <ul style="list-style:none;margin-left:0;padding-left:0">
+        <li><b>A)</b> El creador debería haber exportado directamente en 4K desde Pavo AI para ahorrar tiempo.</li>
+        <li><b>B)</b> El proceso es correcto, pero solo funcionará si el video original tiene al menos 1080p.</li>
+        <li><b>C)</b> El proceso es correcto y la versión gratuita de VideoProc AI permite 5 exportaciones 4K sin marca de agua.</li>
+        <li><b>D)</b> El proceso es incorrecto porque VideoProc AI solo escala imágenes, no videos.</li>
+      </ul>
+
+      <span class="ej-label">Solución paso a paso</span>
+      <ol class="steps">
+        <li>El Capítulo 4 indica que la versión gratuita de VideoProc AI "te otorga <b>5 exportaciones completas a 4K sin marca de agua</b>".</li>
+        <li>También confirma que el proceso descrito (abrir Súper Resolución, cargar video 720p, configurar 4K, ejecutar RUN) es exactamente el flujo correcto.</li>
+        <li>La opción A es incorrecta porque el tutorial advierte: "No intentes exportar en 4K directo desde Pavo AI para no gastar dinero/créditos".</li>
+        <li>La opción B es incorrecta porque el tutorial indica que se puede escalar desde 720p o incluso 360p.</li>
+        <li>La opción D es incorrecta porque VideoProc AI procesa tanto videos como imágenes.</li>
+        <li>Por lo tanto, la respuesta correcta es la <b>C</b>.</li>
+      </ol>
+
+      <div class="callout info">
+        <span class="ct">Por qué (Explicación causal)</span>
+        <p style="margin:0">El flujo de trabajo gratuito se basa en una <b>división estratégica</b>: Pavo AI genera a 720p (costo cero) y VideoProc AI escala localmente a 4K (costo cero en versión gratuita con límite de 5 exportaciones). Intentar exportar en 4K desde Pavo AI rompe esta estrategia y activa el cobro de créditos. La opción C refleja fielmente tanto el proceso correcto como la limitación real de la versión gratuita.</p>
+      </div>
+
+      <div class="callout warn">
+        <span class="ct">Error típico a evitar</span>
+        <p style="margin:0">El estudiante podría elegir la opción A pensando que "si se puede pagar, mejor hacerlo directo". El tutorial enfatiza que el objetivo es mantener el costo en cero. Para evitarlo, recordar la regla de oro: <b>720p en Pavo AI, 4K en VideoProc AI</b>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== TABLA RESUMEN ========== -->
+  <h3 class="sec-sub">Tabla Resumen de los 10 Ejercicios</h3>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Nº</th><th>Tipo</th><th>Dificultad</th><th>Tema Principal</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Opción múltiple</td><td><span class="diff-badge facil">Fácil</span></td><td>Beneficio de la generación de video IA</td></tr>
+        <tr><td>2</td><td>Emparejamiento</td><td><span class="diff-badge media">Media</span></td><td>Funciones de las 3 herramientas</td></tr>
+        <tr><td>3</td><td>Ordenamiento</td><td><span class="diff-badge media">Media</span></td><td>Flujo de trabajo en 3 fases</td></tr>
+        <tr><td>4</td><td>Verdadero/Falso</td><td><span class="diff-badge dificil">Difícil</span></td><td>Consistencia visual y etiquetas @</td></tr>
+        <tr><td>5</td><td>Caso práctico</td><td><span class="diff-badge dificil">Difícil</span></td><td>Errores en Fase 1 (Google Flow)</td></tr>
+        <tr><td>6</td><td>Opción múltiple</td><td><span class="diff-badge facil">Fácil</span></td><td>Condiciones para 0 créditos en Pavo AI</td></tr>
+        <tr><td>7</td><td>Respuesta corta</td><td><span class="diff-badge media">Media</span></td><td>First &amp; Last Frame y desvinculación</td></tr>
+        <tr><td>8</td><td>Escritura de prompt</td><td><span class="diff-badge dificil">Difícil</span></td><td>Estructura por tiempos y Hard Cut</td></tr>
+        <tr><td>9</td><td>Detección de errores</td><td><span class="diff-badge media">Media</span></td><td>Guion fonético para lip-sync</td></tr>
+        <tr><td>10</td><td>Caso práctico integral</td><td><span class="diff-badge dificil">Difícil</span></td><td>Escalado a 4K con VideoProc AI</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ========== VACÍOS DETECTADOS ========== -->
+  <h3 class="sec-sub">Vacíos Detectados en el Tutorial</h3>
+  <div class="callout warn">
+    <span class="ct">Recordatorio</span>
+    <p style="margin:0 0 10px">Los siguientes temas <b>no están cubiertos explícitamente</b> por el tutorial original y son oportunidades de mejora o de investigación complementaria:</p>
+    <ol style="margin:0">
+      <li>No se explica cómo se genera o selecciona la voz del personaje.</li>
+      <li>No se detalla cómo unir varios clips de 12 segundos para formar un video largo.</li>
+      <li>No se abordan aspectos legales (consentimiento de imagen, derechos de autor, uso comercial).</li>
+      <li>No se aclara qué ocurre si Agnes Video 2.5 Flash deja de ser gratuito.</li>
+      <li>No se profundiza en el modo Drama Corto (flujo exacto, límites, calidad).</li>
+      <li>No se incluye un checklist de exportación final (códec, bitrate, FPS, audio).</li>
+      <li>No se explica cómo manejar prompts que fallen o generen resultados inconsistentes.</li>
+      <li>No se mencionan alternativas a las tres herramientas principales si alguna no está disponible.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: FUENTES =================== -->
+<section id="sec-fuentes" class="section">
+  <h2 class="sec-title"><span class="num-tag">🔗</span> Fuentes y Enlaces Oficiales</h2>
+
+  <h3 class="sec-sub">Video de Referencia en YouTube</h3>
+  <div class="card">
+    <div class="card-title"><span class="ic">▶</span> Título del Video</div>
+    <p style="margin-bottom:10px"><b>¡ALERTA! NUEVO MODELO para CREAR VIDEOS LARGOS en 4K GRATIS y SIN LÍMITES 🚀 (No Clickbait)</b></p>
+    <p style="margin:0;word-break:break-all"><b>Enlace:</b> <a href="https://youtube.com/watch?v=fWtL894jYuo&amp;is=2tsNxULIGjw-0kjn" target="_blank" rel="noopener noreferrer">https://youtube.com/watch?v=fWtL894jYuo&amp;is=2tsNxULIGjw-0kjn</a></p>
+  </div>
+
+  <h3 class="sec-sub">Lista Completa de Fuentes y Plataformas</h3>
+
+  <div class="card">
+    <div class="card-title"><span class="ic">1</span> Google Flow — Generación de imágenes y referencias</div>
+    <p style="margin:0;word-break:break-all"><b>URL:</b> <a href="https://flow.google.com/" target="_blank" rel="noopener noreferrer">https://flow.google.com/</a></p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ic">2</span> Pavo AI / Pavo App — Animación de video, Agnes Video 2.5 Flash y Drama Corto</div>
+    <p style="margin:0 0 6px;word-break:break-all"><b>Plataforma Web:</b> <a href="https://app.pavo-ai.work/" target="_blank" rel="noopener noreferrer">https://app.pavo-ai.work/</a></p>
+    <p style="margin:0;word-break:break-all"><b>Descarga Mobile:</b> <a href="https://app.pavo-ai.work/mobile/download" target="_blank" rel="noopener noreferrer">https://app.pavo-ai.work/mobile/download</a></p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ic">3</span> VideoProc AI — Software de reescalado y mejora a 4K</div>
+    <p style="margin:0 0 6px;word-break:break-all"><b>Landing Promocional:</b> <a href="https://tinyurl.com/3t9peuaj" target="_blank" rel="noopener noreferrer">https://tinyurl.com/3t9peuaj</a></p>
+    <p style="margin:0 0 6px;word-break:break-all"><b>Descarga Gratuita:</b> <a href="https://tinyurl.com/kydry7xu" target="_blank" rel="noopener noreferrer">https://tinyurl.com/kydry7xu</a></p>
+    <p style="margin:0 0 6px;word-break:break-all"><b>Descuento Lifetime:</b> <a href="https://tinyurl.com/53x9ue98" target="_blank" rel="noopener noreferrer">https://tinyurl.com/53x9ue98</a></p>
+    <p style="margin:0;word-break:break-all"><b>Feature Enhance AI (oficial):</b> <a href="https://www.videoproc.com/es/video-converting-software/feature-enhance-ai-videos-images.htm?ttref=2609-vpc-aigc-ytb-ful-zehia-tyq&amp;AFFILIATE=258142&amp;__c=1" target="_blank" rel="noopener noreferrer">https://www.videoproc.com/es/video-converting-software/feature-enhance-ai-videos-images.htm</a></p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><span class="ic">4</span> Documentación Técnica ZehIAs — Prompts y configuraciones oficiales</div>
+    <p style="margin:0;word-break:break-all"><b>Google Docs:</b> <a href="https://docs.google.com/document/u/0/d/11m9NPljjMFfaT-9YvTMuR0zv64y7WvDi/mobilebasic" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/u/0/d/11m9NPljjMFfaT-9YvTMuR0zv64y7WvDi/mobilebasic</a></p>
+  </div>
+
+  <div class="callout info">
+    <span class="ct">Nota</span>
+    <p style="margin:0">Todos los enlaces se conservan tal como aparecen en el material original del tutorial. Se recomienda verificarlos directamente en el documento fuente.</p>
+  </div>
+</section>
+
+<!-- =================== SECCIÓN: CRÉDITOS =================== -->
+<section id="sec-creditos" class="section">
+  <h2 class="sec-title"><span class="num-tag">🎬</span> Créditos</h2>
+
+  <div class="hero-svg-wrap" id="svgCredits"></div>
+
+  <div class="credits-box">
+    <h3>Dominio de Video IA — Creación 4K Gratuita e Ilimitada</h3>
+    <p class="meta">Tutorial técnico · Flujo profesional de IA generativa de video</p>
+    <div class="name">Rubén Sbarsky</div>
+    <p class="meta">📅 Fecha: <b style="color:var(--accent)">24/09/2026</b></p>
+    <p class="meta">⏱️ Hora: <b style="color:var(--accent)">16:36:16</b></p>
+    <p class="note">
+      📚 Tutorial solo con fines Educativos y Divulgación.<br>
+      Todos los conceptos, prompts y metodologías aquí presentados provienen de la documentación técnica original.
+    </p>
+    <p class="fiat">Fiat iustitia, ruat caelum.</p>
+  </div>
+</section>
+
+<!-- =================== FOOTER =================== -->
+<footer>
+  📚 Tutorial solo con fines Educativos y Divulgación<br>
+  👨‍💻 Créditos: Rubén Sbarsky<br>
+  📅 FECHA: 24/09/2026 &nbsp;·&nbsp; Hora: 16:36:16
+  <div class="fi">Fiat iustitia, ruat caelum.</div>
+</footer>
+
+<button id="toTop" aria-label="Volver arriba">↑</button>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- MONTAR SVG (MISMA ILUSTRACIÓN) ---------- */
+  var heroTemplateHTML = document.getElementById('heroSvgTemplate').innerHTML;
+
+  function mountHero(containerId){
+    var el = document.getElementById(containerId);
+    if(!el) return;
+    el.innerHTML = heroTemplateHTML;
+  }
+  mountHero('svgHome');
+  mountHero('svgCredits');
+
+  /* ---------- NAVEGACIÓN SPA ---------- */
+  var navLinks = document.querySelectorAll('.nav-link');
+  var sections = document.querySelectorAll('.section');
+
+  function showSection(id){
+    sections.forEach(function(s){ s.classList.remove('active'); });
+    var target = document.getElementById(id);
+    if(target) target.classList.add('active');
+
+    navLinks.forEach(function(l){
+      l.classList.toggle('active', l.getAttribute('data-target') === id);
+    });
+
+    // Reiniciar animación SVG al volver a Inicio o Créditos
+    if(id === 'sec-inicio'){
+      mountHero('svgHome');
+    }
+    if(id === 'sec-creditos'){
+      mountHero('svgCredits');
+    }
+
+    // Scroll suave arriba
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  navLinks.forEach(function(link){
+    link.addEventListener('click', function(){
+      var t = link.getAttribute('data-target');
+      if(t) showSection(t);
+    });
+  });
+
+  /* ---------- BARRA DE PROGRESO ---------- */
+  var progressFill = document.getElementById('progressFill');
+  function updateProgress(){
+    var h = document.documentElement;
+    var st = h.scrollTop || document.body.scrollTop;
+    var sh = (h.scrollHeight || document.body.scrollHeight) - h.clientHeight;
+    var pct = sh > 0 ? (st / sh) * 100 : 0;
+    progressFill.style.width = pct.toFixed(2) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  /* ---------- BOTÓN VOLVER ARRIBA ---------- */
+  var toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 400) toTop.classList.add('show');
+    else toTop.classList.remove('show');
+  }, {passive:true});
+
+  toTop.addEventListener('click', function(){
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  /* ---------- COPIAR PROMPTS ---------- */
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = '';
+      var targetId = btn.getAttribute('data-copy-target');
+      if(targetId){
+        var el = document.getElementById(targetId);
+        if(el) text = el.textContent;
+      } else {
+        text = btn.getAttribute('data-copy') || '';
+      }
+      if(!text) return;
+
+      var done = function(){
+        var old = btn.textContent;
+        btn.textContent = '✓ Copiado';
+        btn.classList.add('done');
+        setTimeout(function(){
+          btn.textContent = old;
+          btn.classList.remove('done');
+        }, 1400);
+      };
+
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done).catch(function(){
+          fallbackCopy(text, done);
+        });
+      } else {
+        fallbackCopy(text, done);
+      }
+    });
+  });
+
+  function fallbackCopy(text, cb){
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.top = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); cb && cb(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  /* ---------- ACORDEONES ---------- */
+  document.querySelectorAll('[data-acc]').forEach(function(acc){
+    var head = acc.querySelector('.acc-head');
+    if(!head) return;
+    head.addEventListener('click', function(){
+      acc.classList.toggle('open');
+    });
+  });
+
+  /* ---------- REINICIO SVG VÍA SVG DOM ---------- */
+  // Refuerza el reinicio de animaciones SMIL al volver a una sección con SVG
+  function restartSvgAnimations(container){
+    if(!container) return;
+    var svg = container.querySelector('svg');
+    if(!svg) return;
+    try{
+      if(typeof svg.setCurrentTime === 'function'){
+        svg.setCurrentTime(0);
+      }
+      var anims = svg.querySelectorAll('animate, animateTransform, animateMotion, set');
+      anims.forEach(function(a){
+        try{
+          if(typeof a.beginElement === 'function') a.beginElement();
+        }catch(e){}
+      });
+    }catch(e){}
+  }
+
+  // Hook a los cambios de sección para Inicio y Créditos
+  var originalShow = showSection;
+  showSection = function(id){
+    originalShow(id);
+    if(id === 'sec-inicio'){
+      setTimeout(function(){ restartSvgAnimations(document.getElementById('svgHome')); }, 30);
+    }
+    if(id === 'sec-creditos'){
+      setTimeout(function(){ restartSvgAnimations(document.getElementById('svgCredits')); }, 30);
+    }
+  };
+
+  // Reasignar listeners con la nueva función
+  navLinks.forEach(function(link){
+    link.onclick = function(){
+      var t = link.getAttribute('data-target');
+      if(t) showSection(t);
+    };
+  });
+
+  /* ---------- REDUCED MOTION ---------- */
+  var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(prefersReduced){
+    document.querySelectorAll('.hero-svg-wrap svg').forEach(function(svg){
+      svg.style.opacity = '0.98';
+    });
+  }
+
+})();
+</script>
+
+</body>
+</html>
